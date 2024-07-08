@@ -37,6 +37,7 @@ import ru.wb.meetings.ui.component.SquareAvatar
 import ru.wb.meetings.ui.component.TagChip
 import ru.wb.meetings.ui.screen.ui_kit.component.Type
 import ru.wb.meetings.ui.interaction.AlwaysHoverInteractionSource
+import ru.wb.meetings.ui.model.Community
 import ru.wb.meetings.ui.model.Meeting
 
 @Composable
@@ -96,9 +97,7 @@ private fun UiKitContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCard(
-            title = "Designa",
-            image = R.drawable.ic_group_placeholder,
-            peopleCount = 10000
+            Community(title = "Designa", image = R.drawable.ic_group_placeholder, peopleCount = 10000)
         )
         Spacer(modifier = Modifier.height(16.dp))
         MembersRowPreview()

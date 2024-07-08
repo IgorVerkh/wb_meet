@@ -83,15 +83,5 @@ private fun MeetingCardPreview() {
                 tags = listOf("Python", "Junior")),
             isOver = true
         )
-        Spacer(modifier = Modifier.height(16.dp))
-        MeetingCard(
-            meeting = Meeting(
-                title = "Developer meeting ngserhrtdhg D ffwasfeveloper meeting",
-                date = "13.09.2024",
-                city = "NY",
-                image = R.drawable.ic_group_placeholder,
-                tags = listOf("Python", "Junior")),
-            isOver = true
-        )
     }
 }
