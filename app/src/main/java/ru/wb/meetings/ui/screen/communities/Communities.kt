@@ -4,24 +4,21 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.AllCommunitiesTopBar
-import ru.wb.meetings.ui.component.AllMeetingsTopBar
 import ru.wb.meetings.ui.component.CommunityCardList
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
-import ru.wb.meetings.ui.component.MeetingsList
-import ru.wb.meetings.ui.component.MeetingsTabRow
 import ru.wb.meetings.ui.component.SearchBar
 import ru.wb.meetings.ui.model.Community
 
 @Composable
-fun Communities() {
+fun Communities(navController: NavHostController) {
 
 }
 

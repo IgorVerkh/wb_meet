@@ -99,6 +99,24 @@ fun CommunityTopBar(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MeetingTopBar(
+    label: String,
+    modifier: Modifier = Modifier,
+    contentColor: Color = NeutralActive
+) {
+    TopAppBar(
+        navigationIcon = { Icon(
+            painter = painterResource(id = R.drawable.ic_back),
+            contentDescription = null,
+            tint = contentColor,
+            modifier = Modifier.padding(end = 8.dp)) },
+        title = { Text(text = label, style = Subheading1, color = contentColor) },
+        modifier = modifier
+    )
+}
+
 @Preview
 @Composable
 private fun ProfileTopBarPreview() {

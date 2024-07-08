@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import ru.wb.meetings.R
-import ru.wb.meetings.ui.component.AllCommunitiesTopBar
 import ru.wb.meetings.ui.component.CommunityTopBar
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsList
@@ -22,7 +22,7 @@ import ru.wb.meetings.ui.theme.Metadata1
 import ru.wb.meetings.ui.theme.NeutralWeak
 
 @Composable
-fun CommunityDetails() {
+fun CommunityDetails(navController: NavHostController) {
 
 }
 
