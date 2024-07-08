@@ -29,15 +29,16 @@ import ru.wb.meetings.ui.component.MeetingCard
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsOutlinedButton
 import ru.wb.meetings.ui.component.MeetingsTextButton
-import ru.wb.meetings.ui.component.MembersRowPreview
+import ru.wb.meetings.ui.component.MembersRow
 import ru.wb.meetings.ui.component.RoundAvatar
 import ru.wb.meetings.ui.component.RoundAvatarEdit
 import ru.wb.meetings.ui.component.SearchBar
 import ru.wb.meetings.ui.component.SquareAvatar
 import ru.wb.meetings.ui.component.TagChip
-import ru.wb.meetings.ui.screen.ui_kit.component.Type
 import ru.wb.meetings.ui.interaction.AlwaysHoverInteractionSource
+import ru.wb.meetings.ui.model.Community
 import ru.wb.meetings.ui.model.Meeting
+import ru.wb.meetings.ui.screen.ui_kit.component.Type
 
 @Composable
 fun UiKit(navController: NavHostController) {
@@ -96,12 +97,13 @@ private fun UiKitContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCard(
-            title = "Designa",
-            image = R.drawable.ic_group_placeholder,
-            peopleCount = 10000
+            Community(title = "Designa", image = R.drawable.ic_group_placeholder, peopleCount = 10000)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        MembersRowPreview()
+        MembersRow(members = listOf(
+            R.drawable.ic_group_placeholder,
+            R.drawable.ic_group_placeholder,
+            R.drawable.ic_group_placeholder,))
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsBottomNavBar(navController = rememberNavController())
     }

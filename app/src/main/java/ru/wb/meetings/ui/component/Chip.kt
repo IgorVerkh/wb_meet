@@ -2,6 +2,7 @@ package ru.wb.meetings.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -31,9 +32,12 @@ enum class SocialMedia(val iconResource: Int) {
 }
 
 @Composable
-fun TagChip(text: String) {
+fun TagChip(
+    text: String,
+    modifier: Modifier = Modifier
+) {
     Text(
-        modifier = Modifier
+        modifier = modifier
             .background(
                 color = BrandBackground,
                 shape = RoundedCornerShape(48.dp)
@@ -43,6 +47,21 @@ fun TagChip(text: String) {
         color = BrandDark,
         text = text
     )
+}
+
+@Composable
+fun TagChipRow(
+    tags: List<String>,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        tags.forEach { tag ->
+            TagChip(text = tag)
+        }
+    }
 }
 
 @Composable
@@ -67,7 +86,7 @@ fun SocialChip(
 
 @Preview
 @Composable
-fun TagChipPreview() {
+private fun TagChipPreview() {
     MeetTheme {
         TagChip(text = "Python")
     }
@@ -75,7 +94,15 @@ fun TagChipPreview() {
 
 @Preview
 @Composable
-fun SocialPreview() {
+private fun TagChipRowPreview() {
+    TagChipRow(
+        tags = listOf("Python", "Junior", "Moscow")
+    )
+}
+
+@Preview
+@Composable
+private fun SocialPreview() {
     MeetTheme {
         Row {
             SocialChip(

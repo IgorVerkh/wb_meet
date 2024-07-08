@@ -2,6 +2,7 @@ package ru.wb.meetings.ui.component
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Text
@@ -89,6 +90,40 @@ fun MeetingsBottomNavBar(
     }
 }
 
+@Composable
+fun MeetingsBottomNavBar(
+    selectedScreen: String,
+    onScreenClick: (BottomNavItem) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    NavigationBar(
+        modifier = modifier
+            .shadow(
+                elevation = 24.dp,
+                spotColor = Black
+            ),
+        containerColor = White
+    ) {
+        items.forEach { destination ->
+            MeetingsNavBarItem(
+                selected = destination.screen.route == selectedScreen,
+                onClick = { onScreenClick(destination) },
+                selectedIcon = {
+                    SelectedNavBarItem(
+                        label = destination.selectedText,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                },
+                unselectedIcon = {
+                    Icon(
+                        painter = painterResource(id = destination.unselectedIcon),
+                        contentDescription = null
+                    )
+                }
+            )
+        }
+    }
+}
 
 @Composable
 private fun SelectedNavBarItem(
