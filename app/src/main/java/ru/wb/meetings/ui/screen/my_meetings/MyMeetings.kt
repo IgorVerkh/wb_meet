@@ -25,8 +25,6 @@ import ru.wb.meetings.ui.model.Meeting
 @Composable
 fun MyMeetings(navController: NavHostController) {
 
-    val meetings: List<Meeting> = listOf()
-
     MyMeetingsContent(
         meetings = meetings,
         navController = navController
@@ -65,53 +63,54 @@ private fun MyMeetingsContent(
     }
 }
 
+private val meetings = listOf(
+    Meeting(
+        title = "Developer meeting",
+        date = "13.09.2024",
+        city = "Казань",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Python", "Junior")),
+    Meeting(
+        title = "Developer meeting Developer meeting Developer meeting Developer meeting Developer meeting",
+        date = "13.09.2024",
+        city = "NY",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf()),
+    Meeting(
+        title = "Developer meeting",
+        date = "14.09.2024",
+        city = "Москва",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Junior", "Moscow")),
+    Meeting(
+        title = "Developer meeting",
+        date = "13.09.2024",
+        city = "Казань",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Python", "Junior")),
+    Meeting(
+        title = "Developer meeting",
+        date = "13.09.2024",
+        city = "Казань",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Python", "Junior")),
+    Meeting(
+        title = "Developer meeting",
+        date = "13.09.2024",
+        city = "Казань",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Python", "Junior")),
+    Meeting(
+        title = "Developer meeting",
+        date = "13.09.2024",
+        city = "Казань",
+        image = R.drawable.ic_group_placeholder,
+        tags = listOf("Python", "Junior")),
+)
+
 @Preview
 @Composable
 private fun MyMeetingsPreview() {
-    val meetings = listOf(
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-        Meeting(
-            title = "Developer meeting Developer meeting Developer meeting Developer meeting Developer meeting",
-            date = "13.09.2024",
-            city = "NY",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf()),
-        Meeting(
-            title = "Developer meeting",
-            date = "14.09.2024",
-            city = "Москва",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Junior", "Moscow")),
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-    )
     MyMeetingsContent(
         meetings = meetings,
         navController = rememberNavController()
