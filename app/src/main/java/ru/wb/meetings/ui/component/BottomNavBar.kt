@@ -3,6 +3,7 @@ package ru.wb.meetings.ui.component
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Text
@@ -17,6 +18,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -43,12 +45,13 @@ val items = listOf(
 @Composable
 fun MeetingsBottomNavBar(
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    elevation: Dp = 24.dp
 ) {
     NavigationBar(
         modifier = modifier
             .shadow(
-                elevation = 24.dp,
+                elevation = elevation,
                 spotColor = Black
             ),
         containerColor = White
