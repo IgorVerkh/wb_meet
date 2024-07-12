@@ -10,6 +10,7 @@ import ru.wb.meetings.ui.screen.SplashScreen
 import ru.wb.meetings.ui.screen.all_meetings.AllMeetings
 import ru.wb.meetings.ui.screen.meeting_details.MeetingDetails
 import ru.wb.meetings.ui.screen.my_meetings.MyMeetings
+import ru.wb.meetings.ui.screen.phone_number.PhoneNumber
 import ru.wb.meetings.ui.screen.profile.Profile
 import ru.wb.meetings.ui.screen.ui_kit.UiKit
 
@@ -17,7 +18,7 @@ import ru.wb.meetings.ui.screen.ui_kit.UiKit
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.SplashScreen.route
+        startDestination = Screen.PhoneNumber.route
     ) {
         composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
@@ -36,6 +37,9 @@ fun SetupNavGraph(navController: NavHostController) {
         }
         composable(Screen.MeetingDetails.route) {
             MeetingDetails(navController = navController)
+        }
+        composable(Screen.PhoneNumber.route) {
+            PhoneNumber(navController = navController)
         }
     }
 }

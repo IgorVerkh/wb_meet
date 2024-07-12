@@ -71,7 +71,7 @@ private fun AllMeetingsContent(
                 .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(16.dp))
-            SearchBar(text = "", onValueChange = {})
+            SearchBar(value = "", onValueChange = {})
             Spacer(modifier = Modifier.height(16.dp))
             MeetingsTabRow(
                 tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),

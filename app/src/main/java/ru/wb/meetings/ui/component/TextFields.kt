@@ -24,16 +24,18 @@ import ru.wb.meetings.ui.theme.NeutralOffWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchBar(
-    text: String,
+fun MeetingsTextField(
+    value: String,
+    placeholder: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     singleLine: Boolean = true,
+    leadingIcon: @Composable (() -> Unit)? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     BasicTextField(
-        value = text,
+        value = value,
         onValueChange = onValueChange,
         modifier = modifier
             .height(36.dp)
@@ -44,19 +46,13 @@ fun SearchBar(
         textStyle = Body1
     ) {
         TextFieldDefaults.DecorationBox(
-            value = text,
+            value = value,
             innerTextField = it,
             singleLine = singleLine,
             enabled = enabled,
             visualTransformation = VisualTransformation.None,
-            leadingIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_search),
-                    contentDescription = null,
-                    tint = NeutralDisabled
-                )
-            },
-            placeholder = { Text(text = "Поиск", style = Body1) },
+            leadingIcon = leadingIcon,
+            placeholder = { Text(text = placeholder, style = Body1) },
             interactionSource = interactionSource,
             contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(
                 top = 2.dp,
@@ -76,11 +72,48 @@ fun SearchBar(
     }
 }
 
+@Composable
+fun SearchBar(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    singleLine: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+) {
+    MeetingsTextField(
+        value = value,
+        placeholder = "Поиск",
+        onValueChange = onValueChange,
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_search),
+                contentDescription = null,
+                tint = NeutralDisabled
+            )
+        },
+        modifier = modifier,
+        enabled = enabled,
+        singleLine = singleLine,
+        interactionSource = interactionSource
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MeetingsTextFieldPreview() {
+    MeetingsTextField(
+        value = "",
+        placeholder = "Placeholder",
+        onValueChange = {}
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun SearchBarPreview() {
     SearchBar(
-        text = "",
+        value = "",
         onValueChange = {}
     )
 }
