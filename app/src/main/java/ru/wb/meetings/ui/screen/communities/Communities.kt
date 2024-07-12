@@ -27,7 +27,7 @@ private fun CommunitiesContent(
     communities: List<Community>
 ) {
     Column {
-        SearchBar(text = "", onValueChange = {})
+        SearchBar(value = "", onValueChange = {})
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCardList(communities = communities)
     }

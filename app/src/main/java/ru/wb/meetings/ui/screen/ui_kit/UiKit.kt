@@ -84,7 +84,7 @@ private fun UiKitContent(
         SquareAvatar(image = R.drawable.ic_group_placeholder, modifier = Modifier.size(size = 48.dp))
         Spacer(modifier = Modifier.height(16.dp))
         SearchBar(
-            text = searchText,
+            value = searchText,
             onValueChange = onSearchTextChange)
         Spacer(modifier = Modifier.height(16.dp))
         Row {
