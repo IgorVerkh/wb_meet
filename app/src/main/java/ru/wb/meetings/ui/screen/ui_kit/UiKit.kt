@@ -1,9 +1,11 @@
 package ru.wb.meetings.ui.screen.ui_kit
 
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -16,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,15 +32,18 @@ import ru.wb.meetings.ui.component.MeetingCard
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsOutlinedButton
 import ru.wb.meetings.ui.component.MeetingsTextButton
-import ru.wb.meetings.ui.component.MembersRowPreview
+import ru.wb.meetings.ui.component.MembersRow
+import ru.wb.meetings.ui.component.OneTimePassword
+import ru.wb.meetings.ui.component.PhoneNumberTextField
 import ru.wb.meetings.ui.component.RoundAvatar
 import ru.wb.meetings.ui.component.RoundAvatarEdit
 import ru.wb.meetings.ui.component.SearchBar
 import ru.wb.meetings.ui.component.SquareAvatar
 import ru.wb.meetings.ui.component.TagChip
-import ru.wb.meetings.ui.screen.ui_kit.component.Type
 import ru.wb.meetings.ui.interaction.AlwaysHoverInteractionSource
+import ru.wb.meetings.ui.model.Community
 import ru.wb.meetings.ui.model.Meeting
+import ru.wb.meetings.ui.screen.ui_kit.component.Type
 
 @Composable
 fun UiKit(navController: NavHostController) {
@@ -54,6 +60,10 @@ private fun UiKitContent(
     searchText: String,
     onSearchTextChange: (String) -> Unit
 ) {
+    // TODO: Refactor. Hoist
+    var password by remember { mutableStateOf("") }
+    var phoneNumber by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -96,14 +106,37 @@ private fun UiKitContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCard(
-            title = "Designa",
-            image = R.drawable.ic_group_placeholder,
-            peopleCount = 10000
+            Community(title = "Designa", image = R.drawable.ic_group_placeholder, peopleCount = 10000)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        MembersRowPreview()
+        MembersRow(members = listOf(
+            R.drawable.ic_group_placeholder,
+            R.drawable.ic_group_placeholder,
+            R.drawable.ic_group_placeholder,))
         Spacer(modifier = Modifier.height(16.dp))
-        MeetingsBottomNavBar(navController = rememberNavController())
+        MeetingsBottomNavBar(
+            navController = rememberNavController(),
+            elevation = 0.dp
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Box(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            OneTimePassword(
+                value = password,
+                onValueChange = {
+                    password = it
+                },
+                actionDone = {},
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        PhoneNumberTextField(
+            value = phoneNumber,
+            onValueChange = { phoneNumber = it }
+        )
+        Spacer(modifier = Modifier.height(48.dp))
     }
 }
 

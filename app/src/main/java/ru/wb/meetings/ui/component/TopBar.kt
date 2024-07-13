@@ -69,6 +69,54 @@ fun AllMeetingsTopBar(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AllCommunitiesTopBar(
+    modifier: Modifier = Modifier,
+    contentColor: Color = NeutralActive
+) {
+    TopAppBar(
+        title = { Text(text = "Сообщества", style = Subheading1, color = contentColor) },
+        modifier = modifier
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CommunityTopBar(
+    label: String,
+    modifier: Modifier = Modifier,
+    contentColor: Color = NeutralActive
+) {
+    TopAppBar(
+        navigationIcon = { Icon(
+            painter = painterResource(id = R.drawable.ic_back),
+            contentDescription = null,
+            tint = contentColor,
+            modifier = Modifier.padding(end = 8.dp)) },
+        title = { Text(text = label, style = Subheading1, color = contentColor) },
+        modifier = modifier
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MeetingTopBar(
+    label: String,
+    modifier: Modifier = Modifier,
+    contentColor: Color = NeutralActive
+) {
+    TopAppBar(
+        navigationIcon = { Icon(
+            painter = painterResource(id = R.drawable.ic_back),
+            contentDescription = null,
+            tint = contentColor,
+            modifier = Modifier.padding(end = 8.dp)) },
+        title = { Text(text = label, style = Subheading1, color = contentColor) },
+        modifier = modifier
+    )
+}
+
 @Preview
 @Composable
 private fun ProfileTopBarPreview() {
@@ -85,4 +133,16 @@ private fun MyMeetingsTopBarPreview() {
 @Composable
 private fun AllMeetingsTopBarPreview() {
     AllMeetingsTopBar()
+}
+
+@Preview
+@Composable
+private fun AllCommunitiesTopBarPreview() {
+    AllCommunitiesTopBar()
+}
+
+@Preview
+@Composable
+private fun CommunityTopBarPreview() {
+    CommunityTopBar("Designa")
 }

@@ -1,10 +1,14 @@
 package ru.wb.meetings.ui.navigation
 
 import androidx.compose.runtime.Composable
+
+
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.wb.meetings.ui.screen.SplashScreen
 import ru.wb.meetings.ui.screen.all_meetings.AllMeetings
+import ru.wb.meetings.ui.screen.meeting_details.MeetingDetails
 import ru.wb.meetings.ui.screen.my_meetings.MyMeetings
 import ru.wb.meetings.ui.screen.profile.Profile
 import ru.wb.meetings.ui.screen.ui_kit.UiKit
@@ -13,8 +17,11 @@ import ru.wb.meetings.ui.screen.ui_kit.UiKit
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.AllMeetings.route
+        startDestination = Screen.SplashScreen.route
     ) {
+        composable(Screen.SplashScreen.route) {
+            SplashScreen(navController = navController)
+        }
         composable(Screen.AllMeetings.route) {
             AllMeetings(navController = navController)
         }
@@ -26,6 +33,9 @@ fun SetupNavGraph(navController: NavHostController) {
         }
         composable(Screen.UiKit.route) {
             UiKit(navController = navController)
+        }
+        composable(Screen.MeetingDetails.route) {
+            MeetingDetails(navController = navController)
         }
     }
 }
