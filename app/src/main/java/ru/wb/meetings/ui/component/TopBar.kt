@@ -17,6 +17,23 @@ import ru.wb.meetings.ui.theme.Subheading1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun WbTopBar(
+    text: String,
+    modifier: Modifier = Modifier,
+    contentColor: Color = NeutralActive,
+    navigationIcon: @Composable () -> Unit = {},
+    actions: @Composable () -> Unit = {},
+) {
+    TopAppBar(
+        navigationIcon = { navigationIcon() },
+        title = { Text(text = text, style = Subheading1, color = contentColor) },
+        actions = { actions() },
+        modifier = modifier
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun ProfileTopBar(
     modifier: Modifier = Modifier,
     contentColor: Color = NeutralActive

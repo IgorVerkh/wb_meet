@@ -60,7 +60,6 @@ fun RoundAvatar(
         contentDescription = null,
         placeholder = painterResource(id = R.drawable.ic_avatar_placeholder),
         modifier = modifier
-            .fillMaxSize()
             .clip(CircleShape)
     )
 }
@@ -109,7 +108,7 @@ private fun BorderedSquareAvatarPreview() {
 @Preview(showBackground = false)
 @Composable
 private fun RoundAvatarPreview() {
-    RoundAvatar(image = null, modifier = Modifier.size(size = 200.dp))
+    RoundAvatar(image = null, modifier = Modifier.size(size = 50.dp))
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFFCDDC39)
