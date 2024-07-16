@@ -11,10 +11,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsList
@@ -25,40 +23,47 @@ import ru.wb.meetings.ui.model.Meeting
 @Composable
 fun MyMeetings(navController: NavHostController) {
 
-    MyMeetingsContent(
-        meetings = meetings,
-        navController = navController
-    )
-}
-
-@Composable
-private fun MyMeetingsContent(
-    meetings: List<Meeting>,
-    navController: NavHostController
-) {
-
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
     Scaffold(
         topBar = { MyMeetingsTopBar(modifier = Modifier.padding(start = 20.dp, end = 24.dp)) },
         bottomBar = { MeetingsBottomNavBar(navController = navController) }
     ) { innerPadding ->
-        Column(
+        MyMeetingsContent(
+            meetings = meetings,
+            selectedTabIndex = selectedTabIndex,
+            onTabClick = { selectedTabIndex = it },
             modifier = Modifier
-                .padding(innerPadding)
-                .padding(horizontal = 24.dp)
-        ) {
-            MeetingsTabRow(
-                tabs = listOf("ЗАПЛАНИРОВАНО", "УЖЕ ПРОШЛИ"),
-                selectedTabIndex = selectedTabIndex,
-                onTabClick = { index -> selectedTabIndex = index },
-                modifier = Modifier.padding(top = 16.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            when (selectedTabIndex) {
-                0 -> MeetingsList(meetings = meetings)
-                1 -> MeetingsList(meetings = meetings)
-            }
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp,
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
+        )
+    }
+}
+
+@Composable
+private fun MyMeetingsContent(
+    meetings: List<Meeting>,
+    selectedTabIndex: Int,
+    onTabClick: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+    ) {
+        MeetingsTabRow(
+            tabs = listOf("ЗАПЛАНИРОВАНО", "УЖЕ ПРОШЛИ"),
+            selectedTabIndex = selectedTabIndex,
+            onTabClick = { index -> onTabClick(index) },
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        when (selectedTabIndex) {
+            0 -> MeetingsList(meetings = meetings)
+            1 -> MeetingsList(meetings = meetings)
         }
     }
 }
@@ -107,12 +112,3 @@ private val meetings = listOf(
         image = R.drawable.ic_group_placeholder,
         tags = listOf("Python", "Junior")),
 )
-
-@Preview
-@Composable
-private fun MyMeetingsPreview() {
-    MyMeetingsContent(
-        meetings = meetings,
-        navController = rememberNavController()
-    )
-}

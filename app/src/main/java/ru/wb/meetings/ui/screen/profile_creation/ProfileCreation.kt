@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.MeetButton
 import ru.wb.meetings.ui.component.MeetingTopBar
 import ru.wb.meetings.ui.component.MeetingsTextField
@@ -24,7 +25,19 @@ import ru.wb.meetings.ui.theme.Subheading2
 
 @Composable
 fun ProfileCreation(navController: NavHostController) {
-
+    Scaffold(
+        topBar = { MeetingTopBar(
+            label = "Профиль",
+            modifier = Modifier.padding(start = 8.dp, end = 24.dp)
+        ) },
+        bottomBar = {  }
+    ) { innerPadding ->
+        ProfileCreationContent(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = 24.dp)
+        )
+    }
 }
 
 @Composable
@@ -37,7 +50,7 @@ private fun ProfileCreationContent(
     ) {
         Spacer(modifier = Modifier.weight(0.1f))
         RoundAvatarEdit(
-            image = null,
+            image = R.drawable.ic_avatar_placeholder,
             modifier = Modifier.size(100.dp)
         )
         Spacer(modifier = Modifier.weight(0.08f))

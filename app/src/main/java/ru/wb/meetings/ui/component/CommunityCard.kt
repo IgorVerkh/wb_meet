@@ -70,7 +70,7 @@ fun CommunityCardList(
 
 @Preview(showBackground = true)
 @Composable
-fun CommunityCardPreview() {
+private fun CommunityCardPreview() {
     val community = Community(
         title = "Designa",
         image = R.drawable.ic_group_placeholder,

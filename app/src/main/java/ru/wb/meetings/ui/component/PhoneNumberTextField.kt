@@ -102,7 +102,7 @@ fun PhoneNumberTextField(
         Spacer(modifier = Modifier.width(8.dp))
 
         BasicTextField(
-            modifier = modifier
+            modifier = Modifier
                 .clip(RoundedCornerShape(5.dp))
                 .background(NeutralOffWhite)
                 .fillMaxWidth(),
@@ -176,14 +176,10 @@ class PhoneVisualTransformation(val mask: String, val maskNumber: Char) : Visual
 }
 
 private class PhoneOffsetMapper(val mask: String, val numberChar: Char) : OffsetMapping {
-
+    // TODO: refactor
     override fun originalToTransformed(offset: Int): Int {
-        var noneDigitCount = 0
-        var i = 0
-        while (i < offset + noneDigitCount) {
-            if (mask[i++] != numberChar) noneDigitCount++
-        }
-        return offset + noneDigitCount
+        val nonDigitCount = mask.substring(0, offset).count { it != numberChar }
+        return offset + nonDigitCount
     }
 
     override fun transformedToOriginal(offset: Int): Int =
