@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ru.wb.meetings.R
+import ru.wb.meetings.ui.component.BottomNavItem
 import ru.wb.meetings.ui.component.Map
 import ru.wb.meetings.ui.component.MeetButton
 import ru.wb.meetings.ui.component.MeetingTopBar
@@ -28,33 +29,32 @@ import ru.wb.meetings.ui.theme.NeutralWeak
 
 @Composable
 fun MeetingDetails(navController: NavHostController) {
+
     Scaffold(
         topBar = { MeetingTopBar(
             label = "Developer Meeting",
             modifier = Modifier.padding(start = 8.dp, end = 24.dp)
         ) },
-        bottomBar = { MeetingsBottomNavBar(
-            selectedScreen = "",
-            onScreenClick = {}
-        ) }
+        bottomBar = { MeetingsBottomNavBar(navController = navController) }
     ) { innerPadding ->
-        Column(
+        MeetingDetailsContent(
             modifier = Modifier
-                .padding(innerPadding)
-                .padding(horizontal = 24.dp)
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            MeetingDetailsContent()
-        }
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp,
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
+        )
     }
 }
 
 @Composable
 private fun MeetingDetailsContent(
-
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState())
+        modifier = modifier.verticalScroll(rememberScrollState())
     ) {
         Text(
             text = "13.09.2024 — Москва, ул. Громова, 4",
@@ -104,7 +104,7 @@ private fun MeetingDetailsWithScaffoldPreview() {
             modifier = Modifier.padding(start = 8.dp, end = 24.dp)
         ) },
         bottomBar = { MeetingsBottomNavBar(
-            selectedScreen = "",
+            selectedScreen = BottomNavItem.Meetings,
             onScreenClick = {}
         ) }
     ) { innerPadding ->

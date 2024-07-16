@@ -33,8 +33,8 @@ private const val OTP_DEFAULT_LENGTH = 4
 fun OneTimePassword(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
     actionDone: (String) -> Unit,
+    modifier: Modifier = Modifier,
     length: Int = OTP_DEFAULT_LENGTH
 ) {
     val focusManager = LocalFocusManager.current

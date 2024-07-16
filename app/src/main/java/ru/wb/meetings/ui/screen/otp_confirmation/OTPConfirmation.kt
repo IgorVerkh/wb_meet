@@ -25,7 +25,19 @@ import ru.wb.meetings.ui.theme.Subheading2
 
 @Composable
 fun OTPConfirmation(navController: NavHostController) {
-
+    Scaffold(
+        topBar = { MeetingTopBar(
+            label = "",
+            modifier = Modifier.padding(start = 8.dp, end = 24.dp)
+        ) },
+        bottomBar = {  }
+    ) { innerPadding ->
+        OTPConfirmationContent(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = 24.dp)
+        )
+    }
 }
 
 @Composable

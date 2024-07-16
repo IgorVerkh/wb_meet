@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ru.wb.meetings.R
+import ru.wb.meetings.ui.component.BottomNavItem
 import ru.wb.meetings.ui.component.CommunityTopBar
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsList
@@ -24,13 +25,32 @@ import ru.wb.meetings.ui.theme.NeutralWeak
 @Composable
 fun CommunityDetails(navController: NavHostController) {
 
+    Scaffold(
+        topBar = { CommunityTopBar(
+            label = "Designa",
+            modifier = Modifier.padding(start = 8.dp, end = 24.dp)
+        ) },
+        bottomBar = { MeetingsBottomNavBar(navController = navController) }
+    ) { innerPadding ->
+        CommunityDetailsContent(
+            meetings = meetings,
+            modifier = Modifier
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp,
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
+        )
+    }
 }
 
 @Composable
 private fun CommunityDetailsContent(
-    meetings: List<Meeting>
+    meetings: List<Meeting>,
+    modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(modifier = modifier) {
         Text(
             text = LoremIpsum(100).values.first(),
             style = Metadata1,
@@ -83,7 +103,7 @@ private fun CommunityDetailsWithScaffoldPreview() {
             modifier = Modifier.padding(start = 8.dp, end = 24.dp)
         ) },
         bottomBar = { MeetingsBottomNavBar(
-            selectedScreen = "",
+            selectedScreen = BottomNavItem.Communities,
             onScreenClick = {}
         ) }
     ) { innerPadding ->

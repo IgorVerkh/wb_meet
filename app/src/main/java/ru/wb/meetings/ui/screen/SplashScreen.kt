@@ -3,7 +3,6 @@ package ru.wb.meetings.ui.screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -14,6 +13,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import ru.wb.meetings.R
+import ru.wb.meetings.ui.navigation.Graph
 import ru.wb.meetings.ui.navigation.Screen
 
 @Composable
@@ -31,7 +31,7 @@ fun SplashScreen(navController: NavHostController) {
             progress = { logoAnimationState.progress }
         )
         if (logoAnimationState.isAtEnd && logoAnimationState.isPlaying) {
-            navController.navigate(Screen.AllMeetings.route) {
+            navController.navigate(Graph.MeetingsGraph.route) {
                 popUpTo(Screen.SplashScreen.route) {
                     inclusive = true
                 }

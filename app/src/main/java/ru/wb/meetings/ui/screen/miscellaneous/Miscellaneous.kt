@@ -1,29 +1,20 @@
 package ru.wb.meetings.ui.screen.miscellaneous
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ru.wb.meetings.R
-import ru.wb.meetings.ui.component.AllCommunitiesTopBar
+import ru.wb.meetings.ui.component.BottomNavItem
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MiscMenuItem
 import ru.wb.meetings.ui.component.RoundAvatar
@@ -35,15 +26,33 @@ import ru.wb.meetings.ui.theme.NeutralDisabled
 @Composable
 fun Miscellaneous(navController: NavHostController) {
 
+    Scaffold(
+        topBar = { WbTopBar(text = "Еще", modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
+        bottomBar = { MeetingsBottomNavBar(navController = navController) }
+    ) { innerPadding ->
+        MiscellaneousContent(
+            onProfileClick = { navController.navigate(Screen.Profile.route) },
+            onMyMeetingsClick = { navController.navigate(Screen.MyMeetings.route) },
+            modifier = Modifier
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp,
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
+        )
+    }
 }
-
-
 
 @Composable
 private fun MiscellaneousContent(
-
+    onProfileClick: () -> Unit,
+    onMyMeetingsClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         MiscMenuItem(
             text = {
                 Column {
@@ -57,14 +66,14 @@ private fun MiscellaneousContent(
             leadingIcon = {
                 RoundAvatar(image = null, modifier = Modifier.size(50.dp))
             },
-            onClick = { /*TODO*/ },
+            onClick = { onProfileClick() },
             modifier = Modifier.height(66.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
         MiscMenuItem(
             text = "Мои встречи",
             leadingIcon = R.drawable.ic_meetings,
-            onClick = { /*TODO*/ }
+            onClick = { onMyMeetingsClick() }
         )
         Spacer(modifier = Modifier.height(8.dp))
         MiscMenuItem(
@@ -101,7 +110,7 @@ private fun MiscellaneousWithScaffoldPreview() {
     Scaffold(
         topBar = { WbTopBar(text = "Еще", modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
         bottomBar = { MeetingsBottomNavBar(
-            selectedScreen = Screen.Profile.route,
+            selectedScreen = BottomNavItem.Mics,
             onScreenClick = {}
         ) }
     ) { innerPadding ->
@@ -110,12 +119,10 @@ private fun MiscellaneousWithScaffoldPreview() {
                 .padding(innerPadding)
                 .padding(horizontal = 24.dp)
         ) {
-            MiscellaneousContent()
+            MiscellaneousContent(
+                onProfileClick = {},
+                onMyMeetingsClick = {}
+            )
         }
     }
-}
-@Preview(showSystemUi = true)
-@Composable
-private fun MiscellaneousPreview() {
-    MiscellaneousContent()
 }

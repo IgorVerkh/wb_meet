@@ -26,118 +26,82 @@ import ru.wb.meetings.ui.model.Meeting
 @Composable
 fun AllMeetings(navController: NavHostController) {
 
-    // TODO: Rework with VM
-    val meetings = listOf(
-        Meeting(
-            title = "Developer meeting",
-            date = "13.09.2024",
-            city = "Казань",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Python", "Junior")),
-        Meeting(
-            title = "Developer meeting Developer meeting Developer meeting Developer meeting Developer meeting",
-            date = "13.09.2024",
-            city = "NY",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Junior", "Moscow")),
-        Meeting(
-            title = "Developer meeting",
-            date = "14.09.2024",
-            city = "Москва",
-            image = R.drawable.ic_group_placeholder,
-            tags = listOf("Junior", "Moscow"))
+    Scaffold(
+        topBar = { AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
+        bottomBar = { MeetingsBottomNavBar(navController = navController) }
+    ) { innerPadding ->
+        AllMeetingsContent(
+            meetings = mock_meetings,
+            modifier = Modifier
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp,
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
         )
-
-    AllMeetingsContent(
-        meetings = meetings,
-        navController = navController
-    )
+    }
 }
 
 @Composable
 private fun AllMeetingsContent(
     meetings: List<Meeting>,
-    navController: NavHostController
+    modifier: Modifier = Modifier
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
-    Scaffold(
-        topBar = { AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
-        bottomBar = { MeetingsBottomNavBar(navController = navController) }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(horizontal = 24.dp)
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            SearchBar(value = "", onValueChange = {})
-            Spacer(modifier = Modifier.height(16.dp))
-            MeetingsTabRow(
-                tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),
-                selectedTabIndex = selectedTabIndex,
-                onTabClick = { index -> selectedTabIndex = index },
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            // TODO: make a function to distinguish between all
-            when (selectedTabIndex) {
-                0 -> MeetingsList(meetings = meetings)
-                1 -> MeetingsList(meetings = listOf())
-            }
+    Column(
+        modifier = modifier
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        SearchBar(value = "", onValueChange = {})
+        Spacer(modifier = Modifier.height(16.dp))
+        MeetingsTabRow(
+            tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),
+            selectedTabIndex = selectedTabIndex,
+            onTabClick = { index -> selectedTabIndex = index },
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        // TODO: make a function to distinguish between all
+        when (selectedTabIndex) {
+            0 -> MeetingsList(meetings = meetings)
+            1 -> MeetingsList(meetings = listOf())
         }
     }
 }
 
-private val meetings = listOf(
+private val mock_meetings = List(10) {
     Meeting(
         title = "Developer meeting",
         date = "13.09.2024",
         city = "Казань",
         image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting Developer meeting Developer meeting Developer meeting Developer meeting",
-        date = "13.09.2024",
-        city = "NY",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf()),
-    Meeting(
-        title = "Developer meeting",
-        date = "14.09.2024",
-        city = "Москва",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Junior", "Moscow")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-)
+        tags = listOf("Python", "Junior"))
+}
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 private fun AllMeetingsPreview() {
     AllMeetingsContent(
-        meetings = meetings,
-        navController = rememberNavController()
+        meetings = mock_meetings
     )
+}
+
+@Preview(showSystemUi = true)
+@Composable
+private fun AllMeetingsWithScaffoldPreview() {
+    Scaffold(
+        bottomBar = { MeetingsBottomNavBar(navController = rememberNavController()) }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+        ) {
+            AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp))
+            AllMeetingsContent(
+                meetings = mock_meetings,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
+        }
+    }
 }

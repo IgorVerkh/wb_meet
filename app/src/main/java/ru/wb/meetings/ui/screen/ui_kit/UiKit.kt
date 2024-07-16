@@ -115,8 +115,7 @@ private fun UiKitContent(
             R.drawable.ic_group_placeholder,))
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsBottomNavBar(
-            navController = rememberNavController(),
-            elevation = 0.dp
+            navController = rememberNavController()
         )
         Spacer(modifier = Modifier.height(16.dp))
         Box(

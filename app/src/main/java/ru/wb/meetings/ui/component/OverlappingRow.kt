@@ -10,8 +10,8 @@ import ru.wb.meetings.R
 
 @Composable
 fun OverlappingRow(
-    modifier: Modifier = Modifier,
     overlappingPercentage: Float,
+    modifier: Modifier = Modifier,
     firstOnTop: Boolean = true,
     content: @Composable () -> Unit
 ) {

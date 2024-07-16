@@ -75,4 +75,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.lottie.compose)
+
+    lintChecks(libs.compose.lint.checks)
 }
