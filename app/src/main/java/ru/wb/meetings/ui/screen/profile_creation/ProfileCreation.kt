@@ -1,6 +1,5 @@
 package ru.wb.meetings.ui.screen.profile_creation
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.MeetButton
 import ru.wb.meetings.ui.component.MeetingTopBar
@@ -24,7 +24,10 @@ import ru.wb.meetings.ui.component.RoundAvatarEdit
 import ru.wb.meetings.ui.theme.Subheading2
 
 @Composable
-fun ProfileCreation(navController: NavHostController) {
+fun ProfileCreation(
+    navController: NavHostController,
+    viewModel: ProfileCreationViewModel = koinViewModel()
+) {
     Scaffold(
         topBar = { MeetingTopBar(
             label = "Профиль",

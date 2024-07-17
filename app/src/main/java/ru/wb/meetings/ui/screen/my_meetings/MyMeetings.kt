@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.MeetingsList
@@ -21,7 +22,10 @@ import ru.wb.meetings.ui.component.MyMeetingsTopBar
 import ru.wb.meetings.ui.model.Meeting
 
 @Composable
-fun MyMeetings(navController: NavHostController) {
+fun MyMeetings(
+    navController: NavHostController,
+    viewModel: MyMeetingsViewModel = koinViewModel()
+) {
 
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 

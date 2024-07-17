@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
 import ru.wb.meetings.ui.component.ProfileTopBar
@@ -29,7 +30,10 @@ import ru.wb.meetings.ui.theme.NeutralDisabled
 import ru.wb.meetings.ui.theme.Subheading2
 
 @Composable
-fun Profile(navController: NavHostController) {
+fun Profile(
+    navController: NavHostController,
+    viewModel: ProfileViewModel = koinViewModel()
+) {
 
     // место для ViewModel, стейта и коллбэков
 

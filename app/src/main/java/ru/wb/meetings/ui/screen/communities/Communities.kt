@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.AllCommunitiesTopBar
 import ru.wb.meetings.ui.component.BottomNavItem
@@ -19,7 +20,10 @@ import ru.wb.meetings.ui.component.SearchBar
 import ru.wb.meetings.ui.model.Community
 
 @Composable
-fun Communities(navController: NavHostController) {
+fun Communities(
+    navController: NavHostController,
+    viewModel: CommunitiesViewModel = koinViewModel()
+) {
 
     Scaffold(
         topBar = { AllCommunitiesTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
