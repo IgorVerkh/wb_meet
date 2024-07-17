@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.BottomNavItem
 import ru.wb.meetings.ui.component.Map
@@ -28,7 +29,10 @@ import ru.wb.meetings.ui.theme.Metadata1
 import ru.wb.meetings.ui.theme.NeutralWeak
 
 @Composable
-fun MeetingDetails(navController: NavHostController) {
+fun MeetingDetails(
+    navController: NavHostController,
+    viewModel: MeetingDetailsViewModel = koinViewModel()
+) {
 
     Scaffold(
         topBar = { MeetingTopBar(

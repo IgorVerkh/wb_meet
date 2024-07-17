@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.R
 import ru.wb.meetings.ui.component.AllMeetingsTopBar
 import ru.wb.meetings.ui.component.MeetingsBottomNavBar
@@ -24,8 +25,10 @@ import ru.wb.meetings.ui.component.SearchBar
 import ru.wb.meetings.ui.model.Meeting
 
 @Composable
-fun AllMeetings(navController: NavHostController) {
-
+fun AllMeetings(
+    navController: NavHostController,
+    viewModel: AllMeetingsViewModel = koinViewModel()
+) {
     Scaffold(
         topBar = { AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
         bottomBar = { MeetingsBottomNavBar(navController = navController) }

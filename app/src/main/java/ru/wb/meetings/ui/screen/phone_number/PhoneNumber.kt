@@ -1,6 +1,5 @@
 package ru.wb.meetings.ui.screen.phone_number
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,11 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.wb.meetings.ui.component.MeetButton
 import ru.wb.meetings.ui.component.MeetingTopBar
 import ru.wb.meetings.ui.component.PhoneNumberTextField
@@ -25,7 +24,10 @@ import ru.wb.meetings.ui.theme.Heading2
 import ru.wb.meetings.ui.theme.Subheading2
 
 @Composable
-fun PhoneNumber(navController: NavHostController) {
+fun PhoneNumber(
+    navController: NavHostController,
+    viewModel: PhoneNumberViewModel = koinViewModel()
+) {
     Scaffold(
         topBar = { MeetingTopBar(
             label = "",
