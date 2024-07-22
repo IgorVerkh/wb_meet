@@ -14,9 +14,9 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { AllMeetingsViewModel() }
-    viewModel { CommunitiesViewModel() }
-    viewModel { CommunityDetailsViewModel() }
+    viewModel { AllMeetingsViewModel(getAllMeetingsUseCase = get()) }
+    viewModel { CommunitiesViewModel(getAllCommunitiesUseCase = get()) }
+    viewModel { CommunityDetailsViewModel(getCommunityById = get()) }
     viewModel { MeetingDetailsViewModel() }
     viewModel { MiscellaneousViewModel() }
     viewModel { MyMeetingsViewModel() }

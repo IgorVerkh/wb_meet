@@ -21,10 +21,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.domain.model.Community
+import com.example.domain.model.Meeting
 import com.example.presentation.R
 import com.example.presentation.component.CommunityCard
 import com.example.presentation.component.MeetButton
@@ -41,8 +44,6 @@ import com.example.presentation.component.MembersRow
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.PhoneNumberTextField
 import com.example.presentation.interaction.AlwaysHoverInteractionSource
-import com.example.presentation.model.Community
-import com.example.presentation.model.Meeting
 import com.example.presentation.screen.ui_kit.component.Type
 
 @Composable
@@ -96,7 +97,8 @@ private fun UiKitContent(
         }
         Spacer(modifier = Modifier.height(16.dp))
         MeetingCard(
-            meeting = Meeting(
+            meetingUI = Meeting(
+                id = 0,
                 title = "Developer meeting",
                 date = "13.09.2024",
                 city = "Казань",
@@ -106,7 +108,14 @@ private fun UiKitContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCard(
-            Community(title = "Designa", image = R.drawable.ic_group_placeholder, peopleCount = 10000)
+            Community(
+                id = 0,
+                title = "Designa",
+                description = LoremIpsum(40).values.first(),
+                image = R.drawable.ic_group_placeholder,
+                meetings = listOf(),
+                attendees = listOf()
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         MembersRow(members = listOf(

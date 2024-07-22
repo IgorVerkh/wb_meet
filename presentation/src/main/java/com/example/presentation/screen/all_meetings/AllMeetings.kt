@@ -7,34 +7,40 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.presentation.R
+import com.example.domain.model.Meeting
 import com.example.presentation.component.AllMeetingsTopBar
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
 import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.SearchBar
-import com.example.presentation.model.Meeting
 import org.koin.androidx.compose.koinViewModel
+
+enum class AllMeetingsTabs(val index: Int) {
+    ALL(0),
+    ACTIVE(1)
+}
 
 @Composable
 internal fun AllMeetings(
     navController: NavHostController,
     viewModel: AllMeetingsViewModel = koinViewModel()
 ) {
+    val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
+
     Scaffold(
         topBar = { AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp)) },
         bottomBar = { MeetingsBottomNavBar(navController = navController) }
     ) { innerPadding ->
         AllMeetingsContent(
-            meetings = mock_meetings,
+            meetingsList = uiState.meetingsList,
             modifier = Modifier
                 .padding(
                     start = 24.dp,
@@ -48,10 +54,10 @@ internal fun AllMeetings(
 
 @Composable
 private fun AllMeetingsContent(
-    meetings: List<Meeting>,
+    meetingsList: List<Meeting>,
     modifier: Modifier = Modifier
 ) {
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
+    var selectedTab by remember { mutableStateOf(AllMeetingsTabs.ALL) }
 
     Column(
         modifier = modifier
@@ -61,50 +67,36 @@ private fun AllMeetingsContent(
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsTabRow(
             tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),
-            selectedTabIndex = selectedTabIndex,
-            onTabClick = { index -> selectedTabIndex = index },
+            selectedTab = selectedTab.index,
+            onTabClick = { tabIndex ->
+                selectedTab = AllMeetingsTabs.entries.toTypedArray()[tabIndex]
+            },
         )
         Spacer(modifier = Modifier.height(16.dp))
         // TODO: make a function to distinguish between all
-        when (selectedTabIndex) {
-            0 -> MeetingsList(meetings = meetings)
-            1 -> MeetingsList(meetings = listOf())
+        when (selectedTab) {
+            AllMeetingsTabs.ALL -> MeetingsList(meetingsList = meetingsList)
+            AllMeetingsTabs.ACTIVE -> MeetingsList(meetingsList = listOf())
         }
     }
-}
-
-private val mock_meetings = List(10) {
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior"))
 }
 
 @Preview(showSystemUi = true)
 @Composable
 private fun AllMeetingsPreview() {
-    AllMeetingsContent(
-        meetings = mock_meetings
-    )
-}
 
-@Preview(showSystemUi = true)
-@Composable
-private fun AllMeetingsWithScaffoldPreview() {
-    Scaffold(
-        bottomBar = { MeetingsBottomNavBar(navController = rememberNavController()) }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-        ) {
-            AllMeetingsTopBar(modifier = Modifier.padding(start = 8.dp, end = 24.dp))
-            AllMeetingsContent(
-                meetings = mock_meetings,
-                modifier = Modifier.padding(horizontal = 24.dp)
-            )
-        }
+    val mock_meetings = List(10) {
+        Meeting(
+            id = 0,
+            title = "Developer meeting",
+            date = "13.09.2024",
+            city = "Казань",
+            image = null,
+            tags = listOf("Python", "Junior")
+        )
     }
+
+    AllMeetingsContent(
+        meetingsList = mock_meetings
+    )
 }

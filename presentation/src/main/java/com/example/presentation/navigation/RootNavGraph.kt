@@ -4,9 +4,11 @@ package com.example.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.navArgument
 import com.example.presentation.screen.SplashScreen
 import com.example.presentation.screen.all_meetings.AllMeetings
 import com.example.presentation.screen.communities.Communities
@@ -78,8 +80,15 @@ private fun NavGraphBuilder.communitiesGraph(navController: NavHostController) {
         composable(Screen.Communities.route) {
             Communities(navController = navController)
         }
-        composable(Screen.CommunityDetails.route) {
-            CommunityDetails(navController = navController)
+        composable(
+            route = Screen.CommunityDetails.route,
+            arguments = listOf(navArgument("id") {type = NavType.IntType})
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getInt("id") ?: throw IllegalArgumentException("Missing 'id' argument")
+            CommunityDetails(
+                id = id,
+                navController = navController
+            )
         }
         composable(Screen.MeetingDetails.route) {
             MeetingDetails(navController = navController)

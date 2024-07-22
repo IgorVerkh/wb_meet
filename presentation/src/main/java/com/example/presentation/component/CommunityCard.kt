@@ -17,9 +17,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import com.example.domain.model.Community
+import com.example.domain.model.User
 import com.example.presentation.R
-import com.example.presentation.model.Community
 import com.example.presentation.theme.Body1
 import com.example.presentation.theme.Metadata1
 import com.example.presentation.theme.NeutralLine
@@ -42,7 +44,7 @@ fun CommunityCard(
                 Text(text = community.title, style = Body1)
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = "${community.peopleCount} человек",
+                    text = "${community.attendees.size} человек",
                     modifier = Modifier.padding(vertical = 4.dp),
                     style = Metadata1,
                     color = NeutralWeak
@@ -72,9 +74,12 @@ fun CommunityCardList(
 @Composable
 private fun CommunityCardPreview() {
     val community = Community(
+        id = 0,
         title = "Designa",
+        description = LoremIpsum(40).values.first(),
         image = R.drawable.ic_group_placeholder,
-        peopleCount = 10000
+        meetings = listOf(),
+        attendees = listOf(User(id = 0, avatar = null))
     )
     CommunityCard(community = community)
 }

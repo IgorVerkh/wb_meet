@@ -54,11 +54,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     // Coil
     implementation(libs.coil.compose)
     // Lottie
     implementation(libs.lottie.compose)
     // Koin
+    implementation(libs.koin.core)
+    implementation(platform(libs.koin.bom))
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
     // Slack linter

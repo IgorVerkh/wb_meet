@@ -12,13 +12,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.example.domain.model.Meeting
 import com.example.presentation.R
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
 import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.MyMeetingsTopBar
-import com.example.presentation.model.Meeting
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -26,7 +27,8 @@ internal fun MyMeetings(
     navController: NavHostController,
     viewModel: MyMeetingsViewModel = koinViewModel()
 ) {
-
+    val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
+    // TODO: rework with vm
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
     Scaffold(
@@ -34,7 +36,7 @@ internal fun MyMeetings(
         bottomBar = { MeetingsBottomNavBar(navController = navController) }
     ) { innerPadding ->
         MyMeetingsContent(
-            meetings = meetings,
+            meetingsList = uiState.meetings,
             selectedTabIndex = selectedTabIndex,
             onTabClick = { selectedTabIndex = it },
             modifier = Modifier
@@ -50,7 +52,7 @@ internal fun MyMeetings(
 
 @Composable
 private fun MyMeetingsContent(
-    meetings: List<Meeting>,
+    meetingsList: List<Meeting>,
     selectedTabIndex: Int,
     onTabClick: (Int) -> Unit,
     modifier: Modifier = Modifier
@@ -60,59 +62,14 @@ private fun MyMeetingsContent(
     ) {
         MeetingsTabRow(
             tabs = listOf("ЗАПЛАНИРОВАНО", "УЖЕ ПРОШЛИ"),
-            selectedTabIndex = selectedTabIndex,
+            selectedTab = selectedTabIndex,
             onTabClick = { index -> onTabClick(index) },
             modifier = Modifier.padding(top = 16.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
         when (selectedTabIndex) {
-            0 -> MeetingsList(meetings = meetings)
-            1 -> MeetingsList(meetings = meetings)
+            0 -> MeetingsList(meetingsList = meetingsList)
+            1 -> MeetingsList(meetingsList = meetingsList)
         }
     }
 }
-
-private val meetings = listOf(
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting Developer meeting Developer meeting Developer meeting Developer meeting",
-        date = "13.09.2024",
-        city = "NY",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf()),
-    Meeting(
-        title = "Developer meeting",
-        date = "14.09.2024",
-        city = "Москва",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Junior", "Moscow")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-    Meeting(
-        title = "Developer meeting",
-        date = "13.09.2024",
-        city = "Казань",
-        image = R.drawable.ic_group_placeholder,
-        tags = listOf("Python", "Junior")),
-)
