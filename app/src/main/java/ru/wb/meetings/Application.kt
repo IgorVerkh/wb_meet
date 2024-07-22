@@ -1,9 +1,10 @@
 package ru.wb.meetings
 
 import android.app.Application
+import com.example.domain.di.domainModule
+import com.example.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import ru.wb.meetings.di.viewModelModule
 
 class Application : Application() {
 
@@ -11,7 +12,8 @@ class Application : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@Application)
-            modules(viewModelModule)
+            modules(presentationModule)
+            modules(domainModule)
         }
     }
 }
