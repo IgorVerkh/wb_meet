@@ -11,11 +11,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.domain.model.Meeting
+import com.example.presentation.R
 import com.example.presentation.component.AllMeetingsTopBar
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
@@ -66,7 +68,10 @@ private fun AllMeetingsContent(
         SearchBar(value = "", onValueChange = {})
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsTabRow(
-            tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),
+            tabs = listOf(
+                stringResource(R.string.all_meetings_tab),
+                stringResource(R.string.active_meetings_tab)
+            ),
             selectedTab = selectedTab.index,
             onTabClick = { tabIndex ->
                 selectedTab = AllMeetingsTabs.entries.toTypedArray()[tabIndex]

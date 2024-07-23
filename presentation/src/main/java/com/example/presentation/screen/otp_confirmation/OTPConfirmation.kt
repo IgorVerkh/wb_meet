@@ -11,10 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.presentation.R
 import com.example.presentation.component.MeetingTopBar
 import com.example.presentation.component.MeetingsTextButton
 import com.example.presentation.component.OneTimePassword
@@ -47,15 +49,16 @@ internal fun OTPConfirmation(
 private fun OTPConfirmationContent(
     modifier: Modifier = Modifier
 ) {
+    val phoneNumber = "+7 999 999-99-99"
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.fillMaxSize()
     ) {
         Spacer(modifier = Modifier.weight(0.16f))
-        Text(text = "Введите код", style = Heading2)
+        Text(text = stringResource(R.string.input_code), style = Heading2)
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Отправили код на номер\n+7 999 999-99-99",
+            text = stringResource(R.string.code_sent_to_number, phoneNumber),
             style = Body2,
             textAlign = TextAlign.Center
         )
@@ -67,7 +70,7 @@ private fun OTPConfirmationContent(
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(
-                text = "Запросить код повторно",
+                text = stringResource(R.string.ask_to_resend_otp_code),
                 style = Subheading2,
 
                 )

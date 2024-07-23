@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -61,7 +62,10 @@ private fun MyMeetingsContent(
         modifier = modifier
     ) {
         MeetingsTabRow(
-            tabs = listOf("ЗАПЛАНИРОВАНО", "УЖЕ ПРОШЛИ"),
+            tabs = listOf(
+                stringResource(R.string.planned_meetings),
+                stringResource(R.string.finished_meetings)
+            ),
             selectedTab = selectedTabIndex,
             onTabClick = { index -> onTabClick(index) },
             modifier = Modifier.padding(top = 16.dp)

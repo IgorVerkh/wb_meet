@@ -31,9 +31,15 @@ internal sealed class BottomNavItem(
     val selectedText: String,
     val unselectedIcon: Int
 ) {
-    data object Meetings : BottomNavItem(Graph.MeetingsGraph, "Встречи", R.drawable.ic_meetings)
-    data object Communities : BottomNavItem(Graph.CommunitiesGraph, "Сообщества", R.drawable.ic_communities)
-    data object Mics : BottomNavItem(Graph.MiscGraph, "Еще", R.drawable.ic_more)
+    data object Meetings : BottomNavItem(
+        Graph.MeetingsGraph, "Встречи", R.drawable.ic_meetings
+    )
+    data object Communities : BottomNavItem(
+        Graph.CommunitiesGraph, "Сообщества", R.drawable.ic_communities
+    )
+    data object Mics : BottomNavItem(
+        Graph.MiscGraph, "Еще", R.drawable.ic_more
+    )
 }
 
 private val items = listOf(
@@ -80,6 +86,7 @@ fun MeetingsBottomNavBar(
     }
 }
 
+// TODO: remove
 @Composable
 internal fun MeetingsBottomNavBar(
     selectedScreen: BottomNavItem,

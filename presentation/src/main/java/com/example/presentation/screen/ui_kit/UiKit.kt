@@ -43,7 +43,7 @@ import com.example.presentation.component.TagChip
 import com.example.presentation.component.MembersRow
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.PhoneNumberTextField
-import com.example.presentation.interaction.AlwaysHoverInteractionSource
+import com.example.presentation.interaction_source.AlwaysHoverInteractionSource
 import com.example.presentation.screen.ui_kit.component.Type
 
 @Composable

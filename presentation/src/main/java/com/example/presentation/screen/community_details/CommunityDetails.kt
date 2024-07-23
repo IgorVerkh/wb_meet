@@ -9,12 +9,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.domain.model.Community
 import com.example.domain.model.Meeting
+import com.example.presentation.R
 import com.example.presentation.component.CommunityTopBar
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
@@ -75,7 +77,7 @@ private fun CommunityDetailsContent(
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             // TODO: string res
-            text = "Встречи сообщества",
+            text = stringResource(R.string.communities_meetings),
             style = Body1,
             color = NeutralWeak
         )

@@ -84,7 +84,7 @@ private fun ProfileContent(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 private fun ProfileContentPreview() {
     ProfileContent()
