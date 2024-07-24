@@ -16,6 +16,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
@@ -44,7 +45,10 @@ fun CommunityCard(
                 Text(text = community.title, style = Body1)
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = "${community.attendees.size} человек",
+                    text = stringResource(
+                        R.string.community_card_attendees_postfix,
+                        community.attendees.size
+                    ),
                     modifier = Modifier.padding(vertical = 4.dp),
                     style = Metadata1,
                     color = NeutralWeak
@@ -79,7 +83,10 @@ private fun CommunityCardPreview() {
         description = LoremIpsum(40).values.first(),
         image = R.drawable.ic_group_placeholder,
         meetings = listOf(),
-        attendees = listOf(User(id = 0, avatar = null))
+        attendees = listOf(
+            User(id = 0, avatar = null),
+            User(id = 0, avatar = null)
+        )
     )
     CommunityCard(community = community)
 }

@@ -11,11 +11,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.domain.model.Meeting
+import com.example.presentation.R
 import com.example.presentation.component.AllMeetingsTopBar
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
@@ -23,10 +25,12 @@ import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.SearchBar
 import org.koin.androidx.compose.koinViewModel
 
-enum class AllMeetingsTabs(val index: Int) {
-    ALL(0),
-    ACTIVE(1)
+private enum class AllMeetingsTabs(val index: Int, val labelStringResource: Int) {
+    ALL(0, R.string.all_meetings_tab),
+    ACTIVE(1, R.string.active_meetings_tab)
 }
+
+private val tabs = listOf(AllMeetingsTabs.ALL, AllMeetingsTabs.ACTIVE)
 
 @Composable
 internal fun AllMeetings(
@@ -66,14 +70,14 @@ private fun AllMeetingsContent(
         SearchBar(value = "", onValueChange = {})
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsTabRow(
-            tabs = listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"),
-            selectedTab = selectedTab.index,
+            tabs = tabs.map { stringResource(it.labelStringResource) },
+            selectedTabIndex = selectedTab.index,
             onTabClick = { tabIndex ->
-                selectedTab = AllMeetingsTabs.entries.toTypedArray()[tabIndex]
+                selectedTab = tabs[tabIndex]
             },
         )
         Spacer(modifier = Modifier.height(16.dp))
-        // TODO: make a function to distinguish between all
+        // TODO: make a function to distinguish between all and active
         when (selectedTab) {
             AllMeetingsTabs.ALL -> MeetingsList(meetingsList = meetingsList)
             AllMeetingsTabs.ACTIVE -> MeetingsList(meetingsList = listOf())

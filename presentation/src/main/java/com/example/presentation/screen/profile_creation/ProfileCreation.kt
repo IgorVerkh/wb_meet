@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -60,13 +61,13 @@ private fun ProfileCreationContent(
         MeetingsTextField(
             value = "",
             onValueChange = { /*TODO*/ },
-            placeholder = "Имя (обязательно)"
+            placeholder = stringResource(R.string.create_profile_name_placeholder)
         )
         Spacer(modifier = Modifier.height(12.dp))
         MeetingsTextField(
             value = "",
             onValueChange = { /*TODO*/ },
-            placeholder = "Фамилия (опционально)"
+            placeholder = stringResource(R.string.create_profile_surname_placeholder)
         )
         Spacer(modifier = Modifier.weight(0.12f))
         MeetButton(
@@ -75,7 +76,7 @@ private fun ProfileCreationContent(
             enabled = false
         ) {
             Text(
-                text = "Сохранить",
+                text = stringResource(R.string.save_button),
                 style = Subheading2,
 
                 )

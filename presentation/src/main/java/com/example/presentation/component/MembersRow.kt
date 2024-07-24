@@ -52,26 +52,13 @@ fun MembersRow(
     }
 }
 
-private val members = listOf<Any?>(
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder,
-    R.drawable.ic_group_placeholder)
-
 @Preview(showBackground = true)
 @Composable
 private fun MembersRowPreview() {
+    val members = List(15) {
+        R.drawable.ic_group_placeholder
+    }
+
     MembersRow(members = members)
 }
 

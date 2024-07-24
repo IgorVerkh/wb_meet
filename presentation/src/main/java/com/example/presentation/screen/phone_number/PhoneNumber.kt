@@ -11,10 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.presentation.R
 import com.example.presentation.component.MeetButton
 import com.example.presentation.component.MeetingTopBar
 import com.example.presentation.component.PhoneNumberTextField
@@ -52,10 +54,13 @@ private fun PhoneNumberContent(
         modifier = modifier.fillMaxSize()
     ) {
         Spacer(modifier = Modifier.weight(0.16f))
-        Text(text = "Введите номер телефона", style = Heading2)
+        Text(
+            text = stringResource(R.string.input_phone_number),
+            style = Heading2
+        )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Мы вышлем код подтверждения\nна указанный вами номер",
+            text = stringResource(R.string.we_send_code_to_phone_number),
             style = Body2,
             textAlign = TextAlign.Center
         )
@@ -69,7 +74,7 @@ private fun PhoneNumberContent(
             enabled = false
         ) {
             Text(
-                text = "Продолжить",
+                text = stringResource(R.string.continue_button),
                 style = Subheading2,
 
             )

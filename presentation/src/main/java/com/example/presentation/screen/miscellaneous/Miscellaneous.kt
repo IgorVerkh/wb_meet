@@ -10,6 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -75,34 +76,34 @@ private fun MiscellaneousContent(
         )
         Spacer(modifier = Modifier.height(8.dp))
         MiscMenuItem(
-            text = "Мои встречи",
+            text = stringResource(R.string.my_meetings),
             leadingIcon = R.drawable.ic_meetings,
             onClick = { onMyMeetingsClick() }
         )
         Spacer(modifier = Modifier.height(8.dp))
         MiscMenuItem(
-            text = "Тема",
+            text = stringResource(R.string.theme),
             leadingIcon = R.drawable.ic_sun,
             onClick = { /*TODO*/ })
         MiscMenuItem(
-            text = "Уведомления",
+            text = stringResource(R.string.notifications),
             leadingIcon = R.drawable.ic_notifications,
             onClick = { /*TODO*/ })
         MiscMenuItem(
-            text = "Безопасность",
+            text = stringResource(R.string.security),
             leadingIcon = R.drawable.ic_security,
             onClick = { /*TODO*/ })
         MiscMenuItem(
-            text = "Память и ресурсы",
+            text = stringResource(R.string.memory_and_resources),
             leadingIcon = R.drawable.ic_files,
             onClick = { /*TODO*/ })
         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
         MiscMenuItem(
-            text = "Помощь",
+            text = stringResource(R.string.help),
             leadingIcon = R.drawable.ic_help,
             onClick = { /*TODO*/ })
         MiscMenuItem(
-            text = "Пригласи друга",
+            text = stringResource(R.string.invite_a_friend),
             leadingIcon = R.drawable.ic_letter,
             onClick = { /*TODO*/ })
     }

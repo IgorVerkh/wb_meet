@@ -17,7 +17,7 @@ import com.example.presentation.theme.SixSixSix
 @Composable
 fun MeetingsTabRow(
     tabs: List<String>,
-    selectedTab: Int,
+    selectedTabIndex: Int,
     onTabClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
     containerColor: Color = Color.Transparent,
@@ -25,13 +25,13 @@ fun MeetingsTabRow(
     indicatorColor: Color = BrandDefault
 ) {
     TabRow(
-        selectedTabIndex = selectedTab,
+        selectedTabIndex = selectedTabIndex,
         containerColor = containerColor,
         contentColor = contentColor,
         divider = {},
         indicator = { tabPositions ->
             SecondaryIndicator(
-                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab]),
+                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                 color = indicatorColor
             )
         },
@@ -40,7 +40,7 @@ fun MeetingsTabRow(
         tabs.forEachIndexed { index, tabTitle ->
             Tab(
                 modifier = Modifier.padding(all = 16.dp),
-                selected = selectedTab == index,
+                selected = selectedTabIndex == index,
                 unselectedContentColor = SixSixSix,
                 onClick = { onTabClick(index) }
             ) {
