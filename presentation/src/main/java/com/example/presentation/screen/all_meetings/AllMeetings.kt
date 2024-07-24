@@ -25,10 +25,12 @@ import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.SearchBar
 import org.koin.androidx.compose.koinViewModel
 
-enum class AllMeetingsTabs(val index: Int) {
-    ALL(0),
-    ACTIVE(1)
+private enum class AllMeetingsTabs(val index: Int, val labelStringResource: Int) {
+    ALL(0, R.string.all_meetings_tab),
+    ACTIVE(1, R.string.active_meetings_tab)
 }
+
+private val tabs = listOf(AllMeetingsTabs.ALL, AllMeetingsTabs.ACTIVE)
 
 @Composable
 internal fun AllMeetings(
@@ -68,17 +70,14 @@ private fun AllMeetingsContent(
         SearchBar(value = "", onValueChange = {})
         Spacer(modifier = Modifier.height(16.dp))
         MeetingsTabRow(
-            tabs = listOf(
-                stringResource(R.string.all_meetings_tab),
-                stringResource(R.string.active_meetings_tab)
-            ),
-            selectedTab = selectedTab.index,
+            tabs = tabs.map { stringResource(it.labelStringResource) },
+            selectedTabIndex = selectedTab.index,
             onTabClick = { tabIndex ->
-                selectedTab = AllMeetingsTabs.entries.toTypedArray()[tabIndex]
+                selectedTab = tabs[tabIndex]
             },
         )
         Spacer(modifier = Modifier.height(16.dp))
-        // TODO: make a function to distinguish between all
+        // TODO: make a function to distinguish between all and active
         when (selectedTab) {
             AllMeetingsTabs.ALL -> MeetingsList(meetingsList = meetingsList)
             AllMeetingsTabs.ACTIVE -> MeetingsList(meetingsList = listOf())

@@ -66,7 +66,7 @@ private fun MyMeetingsContent(
                 stringResource(R.string.planned_meetings),
                 stringResource(R.string.finished_meetings)
             ),
-            selectedTab = selectedTabIndex,
+            selectedTabIndex = selectedTabIndex,
             onTabClick = { index -> onTabClick(index) },
             modifier = Modifier.padding(top = 16.dp)
         )
