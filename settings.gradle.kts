@@ -23,4 +23,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Meet"
 include(":app")
+include(":data")
+include(":presentation")
+include(":domain")
  

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Meet</string>
+    <string name="community_card_attendees_postfix">%1$s человек</string>
+    <string name="meetings_is_over">Закончилась</string>
+    <string name="search_bar_placeholder">Поиск</string>
+    <string name="all_meetings_tab">ВСЕ ВСТРЕЧИ</string>
+    <string name="active_meetings_tab">АКТИВНЫЕ</string>
+    <string name="communities_meetings">Встречи сообщества</string>
+    <string name="gonna_attend_the_meeting">Пойду на встречу!</string>
+    <string name="my_meetings">Мои встречи</string>
+    <string name="theme">Тема</string>
+    <string name="notifications">Уведомления</string>
+    <string name="security">Безопасность</string>
+    <string name="memory_and_resources">Память и ресурсы</string>
+    <string name="help">Помощь</string>
+    <string name="invite_a_friend">Пригласи друга</string>
+    <string name="planned_meetings">ЗАПЛАНИРОВАНО</string>
+    <string name="finished_meetings">УЖЕ ПРОШЛИ</string>
+    <string name="input_code">Введите код</string>
+    <string name="code_sent_to_number">Отправили код на номер\n%1$s</string>
+    <string name="ask_to_resend_otp_code">Запросить код повторно</string>
+    <string name="input_phone_number">Введите номер телефона</string>
+    <string name="we_send_code_to_phone_number">Мы вышлем код подтверждения\nна указанный вами номер</string>
+    <string name="continue_button">Продолжить</string>
+    <string name="create_profile_name_placeholder">Имя (обязательно)</string>
+    <string name="create_profile_surname_placeholder">Фамилия (опционально)</string>
+    <string name="save_button">Сохранить</string>
+</resources>
