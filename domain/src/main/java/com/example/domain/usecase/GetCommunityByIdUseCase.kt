@@ -5,13 +5,13 @@ import com.example.domain.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-interface GetCommunityById {
+interface GetCommunityByIdUseCase {
     operator fun invoke(id: Int): Flow<Community>
 }
 
-internal class GetCommunityByIdMockImpl(
+internal class GetCommunityByIdUseCaseMockImpl(
 
-) : GetCommunityById {
+) : GetCommunityByIdUseCase {
     override fun invoke(id: Int): Flow<Community> = mockCommunity
 }
 
