@@ -5,11 +5,11 @@ import com.example.domain.repository.MeetRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetAllCommunitiesUseCase {
-    suspend operator fun invoke(): Flow<List<Community>>
+    operator fun invoke(): Flow<List<Community>>
 }
 
 internal class GetAllCommunitiesUseCaseImpl(
     private val repository: MeetRepository
 ) : GetAllCommunitiesUseCase {
-    override suspend fun invoke(): Flow<List<Community>> = repository.getAllCommunities()
+    override fun invoke(): Flow<List<Community>> = repository.getAllCommunities()
 }

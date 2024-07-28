@@ -5,11 +5,11 @@ import com.example.domain.repository.MeetRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetMeetingByIdUseCase {
-    suspend operator fun invoke(id: Int): Flow<Meeting>
+    operator fun invoke(id: Int): Flow<Meeting>
 }
 
 internal class GetMeetingByIdUseCaseImpl(
     private val repository: MeetRepository
 ) : GetMeetingByIdUseCase {
-    override suspend fun invoke(id: Int): Flow<Meeting> = repository.getMeetingById(id = id)
+    override fun invoke(id: Int): Flow<Meeting> = repository.getMeetingById(id = id)
 }

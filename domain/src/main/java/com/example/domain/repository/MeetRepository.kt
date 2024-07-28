@@ -6,19 +6,19 @@ import kotlinx.coroutines.flow.Flow
 
 interface MeetRepository {
 
-    suspend fun getAllCommunities(): Flow<List<Community>>
+    fun getAllCommunities(): Flow<List<Community>>
 
-    suspend fun getCommunityById(id: Int): Flow<Community>
+    fun getCommunityById(id: Int): Flow<Community>
 
-    suspend fun getAllMeetings(): Flow<List<Meeting>>
+    fun getAllMeetings(): Flow<List<Meeting>>
 
-    suspend fun getMeetingById(id: Int): Flow<Meeting>
+    fun getMeetingById(id: Int): Flow<Meeting>
 
-    suspend fun applyToMeeting(id: Int)
+    fun applyToMeeting(id: Int)
 
-    suspend fun revokeMeetingApplication(id: Int)
+    fun revokeMeetingApplication(id: Int)
 
-    suspend fun sendPhoneNumber()
+    fun sendPhoneNumber()
 
-    suspend fun submitOTP()
+    fun submitOTP()
 }

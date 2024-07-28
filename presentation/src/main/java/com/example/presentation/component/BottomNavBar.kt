@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -29,7 +30,7 @@ import com.example.presentation.theme.NeutralActive
 
 internal sealed class BottomNavItem(
     val graph: Graph,
-    val selectedTextResource: Int,
+    @StringRes val selectedTextResource: Int,
     val unselectedIcon: Int
 ) {
     data object Meetings : BottomNavItem(

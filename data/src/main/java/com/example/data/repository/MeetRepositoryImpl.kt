@@ -8,35 +8,35 @@ import kotlinx.coroutines.flow.Flow
 internal class MeetRepositoryImpl(
 
 ) : MeetRepository {
-    override suspend fun getAllCommunities(): Flow<List<Community>> {
+    override fun getAllCommunities(): Flow<List<Community>> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getCommunityById(id: Int): Flow<Community> {
+    override fun getCommunityById(id: Int): Flow<Community> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getAllMeetings(): Flow<List<Meeting>> {
+    override fun getAllMeetings(): Flow<List<Meeting>> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getMeetingById(id: Int): Flow<Meeting> {
+    override fun getMeetingById(id: Int): Flow<Meeting> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun applyToMeeting(id: Int) {
+    override fun applyToMeeting(id: Int) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun revokeMeetingApplication(id: Int) {
+    override fun revokeMeetingApplication(id: Int) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun sendPhoneNumber() {
+    override fun sendPhoneNumber() {
         TODO("Not yet implemented")
     }
 
-    override suspend fun submitOTP() {
+    override fun submitOTP() {
         TODO("Not yet implemented")
     }
 
