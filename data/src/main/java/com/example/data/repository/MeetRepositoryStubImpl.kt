@@ -9,23 +9,24 @@ import com.example.data.toCommunity
 import com.example.data.toMeeting
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 
 class MeetRepositoryStubImpl : MeetRepository {
-    override fun getAllCommunities(): Flow<List<Community>> = flow {
-        emit(mockedCommunities.map { dataCommunity -> dataCommunity.toCommunity()})
-    }
+    override fun getAllCommunities(): Flow<List<Community>> = flowOf(
+        mockedCommunities.map { dataCommunity -> dataCommunity.toCommunity()}
+    )
 
-    override fun getCommunityById(id: Int): Flow<Community> = flow {
-        emit(mockedCommunities.find { it.id == id }!!.toCommunity())
-    }
+    override fun getCommunityById(id: Int): Flow<Community> = flowOf(
+        mockedCommunities.find { it.id == id }!!.toCommunity()
+    )
 
-    override fun getAllMeetings(): Flow<List<Meeting>> = flow {
-        emit(mockedMeetings.map { dataMeeting -> dataMeeting.toMeeting() })
-    }
+    override fun getAllMeetings(): Flow<List<Meeting>> = flowOf(
+        mockedMeetings.map { dataMeeting -> dataMeeting.toMeeting() }
+    )
 
-    override fun getMeetingById(id: Int): Flow<Meeting> = flow {
-        emit(mockedMeetings.find { it.id == id }!!.toMeeting())
-    }
+    override fun getMeetingById(id: Int): Flow<Meeting> = flowOf(
+        mockedMeetings.find { it.id == id }!!.toMeeting()
+    )
 
     override fun applyToMeeting(id: Int) {
         TODO("Not yet implemented")
