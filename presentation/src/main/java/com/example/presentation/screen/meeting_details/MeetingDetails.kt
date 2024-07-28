@@ -31,6 +31,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun MeetingDetails(
+    id: Int,
     navController: NavHostController,
     viewModel: MeetingDetailsViewModel = koinViewModel()
 ) {

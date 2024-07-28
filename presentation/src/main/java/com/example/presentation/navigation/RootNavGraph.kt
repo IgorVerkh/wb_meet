@@ -66,9 +66,7 @@ private fun NavGraphBuilder.meetingsGraph(navController: NavHostController) {
         composable(Screen.AllMeetings.route) {
             AllMeetings(navController = navController)
         }
-        composable(Screen.MeetingDetails.route) {
-            MeetingDetails(navController = navController)
-        }
+        meetingsDetails(navController = navController)
     }
 }
 
@@ -80,19 +78,8 @@ private fun NavGraphBuilder.communitiesGraph(navController: NavHostController) {
         composable(Screen.Communities.route) {
             Communities(navController = navController)
         }
-        composable(
-            route = Screen.CommunityDetails.route,
-            arguments = listOf(navArgument("id") {type = NavType.IntType})
-        ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getInt("id") ?: throw IllegalArgumentException("Missing 'id' argument")
-            CommunityDetails(
-                id = id,
-                navController = navController
-            )
-        }
-        composable(Screen.MeetingDetails.route) {
-            MeetingDetails(navController = navController)
-        }
+        communityDetails(navController = navController)
+        meetingsDetails(navController = navController)
     }
 }
 
@@ -110,8 +97,34 @@ private fun NavGraphBuilder.miscGraph(navController: NavHostController) {
         composable(Screen.MyMeetings.route) {
             MyMeetings(navController = navController)
         }
-        composable(Screen.MeetingDetails.route) {
-            MeetingDetails(navController = navController)
-        }
+        meetingsDetails(navController = navController)
+    }
+}
+
+private fun NavGraphBuilder.meetingsDetails(navController: NavHostController) {
+    composable(
+        route = "${Screen.MeetingDetails.route}/{id}",
+        arguments = listOf(navArgument("id") { type = NavType.IntType })
+    ) { backStackEntry ->
+        val id = backStackEntry.arguments?.getInt("id")
+            ?: throw IllegalArgumentException("Missing 'id' argument")
+        MeetingDetails(
+            id = id,
+            navController = navController
+        )
+    }
+}
+
+private fun NavGraphBuilder.communityDetails(navController: NavHostController) {
+    composable(
+        route = "${Screen.CommunityDetails.route}/{id}",
+        arguments = listOf(navArgument("id") { type = NavType.IntType })
+    ) { backStackEntry ->
+        val id = backStackEntry.arguments?.getInt("id")
+            ?: throw IllegalArgumentException("Missing 'id' argument")
+        CommunityDetails(
+            id = id,
+            navController = navController
+        )
     }
 }

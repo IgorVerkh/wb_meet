@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,12 +28,14 @@ import com.example.presentation.theme.NeutralWeak
 internal fun MeetingCard(
     meetingUI: Meeting,
     isOver: Boolean,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .padding(all = 4.dp)
+            .clickable { onClick() }
     ) {
         Row {
             SquareAvatar(image = meetingUI.image, modifier = Modifier.size(size = 48.dp))
@@ -85,7 +88,8 @@ private fun MeetingCardPreview() {
                 city = "Казань",
                 image = R.drawable.ic_group_placeholder,
                 tags = listOf("Python", "Junior")),
-            isOver = true
+            isOver = true,
+            onClick = { }
         )
     }
 }

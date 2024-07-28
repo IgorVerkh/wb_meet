@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -37,8 +36,8 @@ internal fun CommunityDetails(
 
     // TODO: separate screen into states
     when(uiState) {
-        CommunityDetailsState.Error -> null
-        CommunityDetailsState.Loading -> null
+        CommunityDetailsState.Error -> null  //TODO
+        CommunityDetailsState.Loading -> null  //TODO
         is CommunityDetailsState.Success ->
             Scaffold(
                 topBar = { CommunityTopBar(
@@ -49,6 +48,7 @@ internal fun CommunityDetails(
             ) { innerPadding ->
                 CommunityDetailsContent(
                     community = (uiState as CommunityDetailsState.Success).community,
+                    meetings = listOf(),  //TODO
                     modifier = Modifier
                         .padding(
                             start = 24.dp,
@@ -66,6 +66,7 @@ internal fun CommunityDetails(
 @Composable
 private fun CommunityDetailsContent(
     community: Community,
+    meetings: List<Meeting>,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -82,6 +83,9 @@ private fun CommunityDetailsContent(
             color = NeutralWeak
         )
         Spacer(modifier = Modifier.height(16.dp))
-        MeetingsList(meetingsList = community.meetings)
+        MeetingsList(
+            meetingsList = meetings,
+            onMeetingClick = {}
+        )
     }
 }

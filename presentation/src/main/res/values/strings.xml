@@ -25,4 +25,7 @@
     <string name="create_profile_name_placeholder">Имя (обязательно)</string>
     <string name="create_profile_surname_placeholder">Фамилия (опционально)</string>
     <string name="save_button">Сохранить</string>
+    <string name="meetings_nav_item">Встречи</string>
+    <string name="commmunities_nav_item">Сообщества</string>
+    <string name="misc_nav_item">Еще</string>
 </resources>
