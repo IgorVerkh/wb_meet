@@ -15,6 +15,7 @@ import com.example.presentation.theme.NeutralLine
 @Composable
 internal fun MeetingsList(
     meetingsList: List<Meeting>,
+    onMeetingClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -22,7 +23,11 @@ internal fun MeetingsList(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(meetingsList) { meeting ->
-            MeetingCard(meeting, isOver = true)
+            MeetingCard(
+                meeting,
+                isOver = true,
+                onClick = { onMeetingClick(meeting.id) }
+            )
             HorizontalDivider(color = NeutralLine)
         }
     }

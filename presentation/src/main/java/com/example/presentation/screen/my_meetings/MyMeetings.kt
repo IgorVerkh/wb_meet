@@ -21,6 +21,7 @@ import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
 import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.MyMeetingsTopBar
+import com.example.presentation.navigation.Screen
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -40,6 +41,9 @@ internal fun MyMeetings(
             meetingsList = uiState.meetings,
             selectedTabIndex = selectedTabIndex,
             onTabClick = { selectedTabIndex = it },
+            onMeetingClick = { id ->
+                navController.navigate("${Screen.MeetingDetails.route}/$id")
+            },
             modifier = Modifier
                 .padding(
                     start = 24.dp,
@@ -56,6 +60,7 @@ private fun MyMeetingsContent(
     meetingsList: List<Meeting>,
     selectedTabIndex: Int,
     onTabClick: (Int) -> Unit,
+    onMeetingClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -72,8 +77,14 @@ private fun MyMeetingsContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         when (selectedTabIndex) {
-            0 -> MeetingsList(meetingsList = meetingsList)
-            1 -> MeetingsList(meetingsList = meetingsList)
+            0 -> MeetingsList(
+                meetingsList = meetingsList,
+                onMeetingClick = onMeetingClick
+            )
+            1 -> MeetingsList(
+                meetingsList = meetingsList,
+                onMeetingClick = onMeetingClick
+            )
         }
     }
 }

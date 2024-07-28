@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -28,17 +30,17 @@ import com.example.presentation.theme.NeutralActive
 
 internal sealed class BottomNavItem(
     val graph: Graph,
-    val selectedText: String,
+    @StringRes val selectedTextResource: Int,
     val unselectedIcon: Int
 ) {
     data object Meetings : BottomNavItem(
-        Graph.MeetingsGraph, "Встречи", R.drawable.ic_meetings
+        Graph.MeetingsGraph, R.string.meetings_nav_item, R.drawable.ic_meetings
     )
     data object Communities : BottomNavItem(
-        Graph.CommunitiesGraph, "Сообщества", R.drawable.ic_communities
+        Graph.CommunitiesGraph, R.string.commmunities_nav_item, R.drawable.ic_communities
     )
     data object Mics : BottomNavItem(
-        Graph.MiscGraph, "Еще", R.drawable.ic_more
+        Graph.MiscGraph, R.string.misc_nav_item, R.drawable.ic_more
     )
 }
 
@@ -73,7 +75,7 @@ fun MeetingsBottomNavBar(
                 },
                 selectedIcon = {
                     SelectedNavBarItem(
-                        label = destination.selectedText
+                        label = stringResource(id = destination.selectedTextResource)
                     )
                 },
                 unselectedIcon = {
@@ -107,7 +109,7 @@ internal fun MeetingsBottomNavBar(
                 onClick = { onScreenClick(destination) },
                 selectedIcon = {
                     SelectedNavBarItem(
-                        label = destination.selectedText,
+                        label = stringResource(id = destination.selectedTextResource),
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                 },

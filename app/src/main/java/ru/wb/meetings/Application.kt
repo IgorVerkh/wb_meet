@@ -1,6 +1,7 @@
 package ru.wb.meetings
 
 import android.app.Application
+import com.example.data.di.dataModule
 import com.example.domain.di.domainModule
 import com.example.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,8 @@ class Application : Application() {
             androidContext(this@Application)
             modules(
                 presentationModule,
-                domainModule
+                domainModule,
+                dataModule
             )
         }
     }

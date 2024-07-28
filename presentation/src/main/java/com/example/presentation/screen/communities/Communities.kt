@@ -19,6 +19,7 @@ import com.example.presentation.component.AllCommunitiesTopBar
 import com.example.presentation.component.CommunityCardList
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.SearchBar
+import com.example.presentation.navigation.Screen
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -34,6 +35,9 @@ internal fun Communities(
     ) { innerPadding ->
         CommunitiesContent(
             communities = uiState.communitiesList,
+            onCommunityClick = { id ->
+                navController.navigate("${Screen.CommunityDetails.route}/$id")
+            },
             modifier = Modifier
                 .padding(
                     start = 24.dp,
@@ -48,6 +52,7 @@ internal fun Communities(
 @Composable
 private fun CommunitiesContent(
     communities: List<Community>,
+    onCommunityClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -55,6 +60,9 @@ private fun CommunitiesContent(
     ) {
         SearchBar(value = "", onValueChange = {})
         Spacer(modifier = Modifier.height(16.dp))
-        CommunityCardList(communities = communities)
+        CommunityCardList(
+            communities = communities,
+            onCommunityClick = onCommunityClick
+        )
     }
 }

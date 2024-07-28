@@ -11,4 +11,11 @@ dependencies {
     implementation(libs.koin.core)
     implementation(platform(libs.koin.bom))
     implementation(libs.kotlinx.coroutines.core)
+
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotlinx.coroutines.test)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

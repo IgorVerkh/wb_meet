@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,12 +32,14 @@ import com.example.presentation.theme.NeutralWeak
 @Composable
 fun CommunityCard(
     community: Community,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .padding(all = 4.dp)
+            .clickable { onClick() }
     ) {
         Row {
             SquareAvatar(image = community.image, modifier = Modifier.size(size = 48.dp))
@@ -61,6 +64,7 @@ fun CommunityCard(
 @Composable
 fun CommunityCardList(
     communities: List<Community>,
+    onCommunityClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -68,7 +72,11 @@ fun CommunityCardList(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(communities) { community ->
-            CommunityCard(community, modifier = Modifier.padding(bottom = 16.dp))
+            CommunityCard(
+                community,
+                onClick = { onCommunityClick(community.id) },
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
             HorizontalDivider(color = NeutralLine)
         }
     }
@@ -83,10 +91,10 @@ private fun CommunityCardPreview() {
         description = LoremIpsum(40).values.first(),
         image = R.drawable.ic_group_placeholder,
         meetings = listOf(),
-        attendees = listOf(
-            User(id = 0, avatar = null),
-            User(id = 0, avatar = null)
-        )
+        attendees = listOf()
     )
-    CommunityCard(community = community)
+    CommunityCard(
+        community = community,
+        onClick = {}
+    )
 }
