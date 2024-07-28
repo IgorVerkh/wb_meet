@@ -23,6 +23,7 @@ import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.MeetingsList
 import com.example.presentation.component.MeetingsTabRow
 import com.example.presentation.component.SearchBar
+import com.example.presentation.navigation.Screen
 import org.koin.androidx.compose.koinViewModel
 
 private enum class AllMeetingsTabs(val index: Int, val labelStringResource: Int) {
@@ -45,6 +46,8 @@ internal fun AllMeetings(
     ) { innerPadding ->
         AllMeetingsContent(
             meetingsList = uiState.meetingsList,
+            onMeetingClick = { id ->
+                navController.navigate("${Screen.MeetingDetails.route}/$id") },
             modifier = Modifier
                 .padding(
                     start = 24.dp,
@@ -59,6 +62,7 @@ internal fun AllMeetings(
 @Composable
 private fun AllMeetingsContent(
     meetingsList: List<Meeting>,
+    onMeetingClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedTab by remember { mutableStateOf(AllMeetingsTabs.ALL) }
@@ -79,8 +83,14 @@ private fun AllMeetingsContent(
         Spacer(modifier = Modifier.height(16.dp))
         // TODO: make a function to distinguish between all and active
         when (selectedTab) {
-            AllMeetingsTabs.ALL -> MeetingsList(meetingsList = meetingsList)
-            AllMeetingsTabs.ACTIVE -> MeetingsList(meetingsList = listOf())
+            AllMeetingsTabs.ALL -> MeetingsList(
+                meetingsList = meetingsList,
+                onMeetingClick = onMeetingClick
+            )
+            AllMeetingsTabs.ACTIVE -> MeetingsList(
+                meetingsList = listOf(),
+                onMeetingClick = onMeetingClick
+            )
         }
     }
 }
@@ -101,6 +111,7 @@ private fun AllMeetingsPreview() {
     }
 
     AllMeetingsContent(
-        meetingsList = mock_meetings
+        meetingsList = mock_meetings,
+        onMeetingClick = { }
     )
 }

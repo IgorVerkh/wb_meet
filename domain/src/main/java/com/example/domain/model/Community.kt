@@ -5,6 +5,6 @@ data class Community(
     val title: String,
     val description: String,
     val image: Any?,
-    val meetings: List<Meeting>,
-    val attendees: List<User>,
+    val meetings: List<Int>,
+    val attendees: List<Int>,
 )

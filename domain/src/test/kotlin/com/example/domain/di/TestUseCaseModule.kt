@@ -10,7 +10,7 @@ import com.example.domain.usecase.GetMeetingByIdUseCase
 import com.example.domain.usecase.GetMeetingByIdUseCaseImpl
 import org.koin.dsl.module
 
-internal val useCaseModule = module {
+internal val testUseCaseModule = module {
     factory<GetAllMeetingsUseCase> {
         GetAllMeetingsUseCaseImpl(repository = get())
     }

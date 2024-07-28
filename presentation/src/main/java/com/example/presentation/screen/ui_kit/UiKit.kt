@@ -104,7 +104,8 @@ private fun UiKitContent(
                 city = "Казань",
                 image = R.drawable.ic_group_placeholder,
                 tags = listOf("Python", "Junior")),
-            isOver = true
+            isOver = true,
+            onClick = { }
         )
         Spacer(modifier = Modifier.height(16.dp))
         CommunityCard(
@@ -114,8 +115,9 @@ private fun UiKitContent(
                 description = LoremIpsum(40).values.first(),
                 image = R.drawable.ic_group_placeholder,
                 meetings = listOf(),
-                attendees = listOf()
-            )
+                attendees = listOf(),
+            ),
+            onClick = { }
         )
         Spacer(modifier = Modifier.height(16.dp))
         MembersRow(members = listOf(

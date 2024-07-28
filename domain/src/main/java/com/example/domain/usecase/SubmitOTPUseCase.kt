@@ -1,4 +1,4 @@
 package com.example.domain.usecase
 
-interface ApplyToMeetingsUseCase {
+interface SubmitOTPUseCase {
 }
