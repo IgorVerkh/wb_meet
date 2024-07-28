@@ -10,7 +10,7 @@ import com.example.domain.repository.MeetRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-internal class MeetRepositoryStubImpl : MeetRepository {
+internal class MeetRepositoryFakeImpl : MeetRepository {
     override fun getAllCommunities(): Flow<List<Community>> = flowOf(
         mockedCommunities.map { dataCommunity -> dataCommunity.toCommunity()}
     )

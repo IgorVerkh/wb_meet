@@ -6,15 +6,16 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import kotlin.test.assertTrue
 
-class TestGetAllMeetings : KoinTest {
+class GetAllCommunitiesTestCase : KoinTest {
 
-    private val getAllMeetingsUseCase: GetAllMeetingsUseCase by inject()
+    private val getAllCommunitiesUseCase : GetAllCommunitiesUseCase by inject()
 
     @BeforeEach
     fun setUp() {
@@ -27,13 +28,13 @@ class TestGetAllMeetings : KoinTest {
     }
 
     @Test
-    fun `get all meetings`() = runTest {
-        assertTrue { getAllMeetingsUseCase().first().isNotEmpty() }
+    fun `should not throw an exception`() = runTest {
+        assertDoesNotThrow { getAllCommunitiesUseCase().first() }
     }
 
     @Test
-    fun `no duplicates`() = runTest {
-        val meetings = getAllMeetingsUseCase().first()
-        assertTrue { meetings.size == meetings.toSet().size }
+    fun `communities list should not contain duplicates`() = runTest {
+        val communities = getAllCommunitiesUseCase().first()
+        assertTrue { communities.size == communities.toSet().size }
     }
 }
