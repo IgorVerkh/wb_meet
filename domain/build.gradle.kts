@@ -13,7 +13,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     testImplementation(libs.junit.jupiter)
-    testImplementation(libs.koin.test.junit5)
     testImplementation(libs.kotlinx.coroutines.test)
 }
 
