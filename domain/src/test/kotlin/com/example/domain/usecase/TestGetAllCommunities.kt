@@ -11,7 +11,7 @@ class TestGetAllCommunities : KoinTest {
     private val getAllCommunitiesUseCase : GetAllCommunitiesUseCase by inject()
 
     @Test
-    fun getAllCommunities() = runTest {
+    fun `get all communities`() = runTest {
         startKoin {
             modules(testModule)
         }

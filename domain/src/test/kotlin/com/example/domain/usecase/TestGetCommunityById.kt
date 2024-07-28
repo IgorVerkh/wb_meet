@@ -11,7 +11,7 @@ class TestGetCommunityById : KoinTest {
     private val getCommunityByIdUseCase : GetCommunityByIdUseCase by inject()
 
     @Test
-    fun getCommunityById() = runTest {
+    fun `get community by id`() = runTest {
         startKoin {
             modules(testModule)
         }

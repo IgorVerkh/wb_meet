@@ -12,7 +12,7 @@ class TestGetMeetingById : KoinTest {
     private val getMeetingByIdUseCase: GetMeetingByIdUseCase by inject()
 
     @Test
-    fun getMeetingById() = runTest {
+    fun `get meeting by id`() = runTest {
         startKoin {
             modules(testModule)
         }
