@@ -1,6 +1,6 @@
 package com.example.data.model
 
-data class DataMeeting(
+internal data class DataMeeting(
     val id: Int,
     val title: String,
     val date: String,

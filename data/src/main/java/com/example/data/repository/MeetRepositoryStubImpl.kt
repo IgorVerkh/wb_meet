@@ -1,17 +1,16 @@
 package com.example.data.repository
 
-import com.example.domain.model.Community
-import com.example.domain.model.Meeting
-import com.example.domain.repository.MeetRepository
 import com.example.data.model.mockedCommunities
 import com.example.data.model.mockedMeetings
 import com.example.data.toCommunity
 import com.example.data.toMeeting
+import com.example.domain.model.Community
+import com.example.domain.model.Meeting
+import com.example.domain.repository.MeetRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
-class MeetRepositoryStubImpl : MeetRepository {
+internal class MeetRepositoryStubImpl : MeetRepository {
     override fun getAllCommunities(): Flow<List<Community>> = flowOf(
         mockedCommunities.map { dataCommunity -> dataCommunity.toCommunity()}
     )

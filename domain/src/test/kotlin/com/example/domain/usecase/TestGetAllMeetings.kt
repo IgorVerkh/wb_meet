@@ -28,7 +28,7 @@ class TestGetAllMeetings : KoinTest {
 
     @Test
     fun `get all meetings`() = runTest {
-        getAllMeetingsUseCase()
+        assertTrue { getAllMeetingsUseCase().first().isNotEmpty() }
     }
 
     @Test

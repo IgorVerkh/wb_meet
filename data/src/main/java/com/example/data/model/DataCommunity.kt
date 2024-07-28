@@ -1,6 +1,6 @@
 package com.example.data.model
 
-data class DataCommunity(
+internal data class DataCommunity(
     val id: Int,
     val title: String,
     val description: String,

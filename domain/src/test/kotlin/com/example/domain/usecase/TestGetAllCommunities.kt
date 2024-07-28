@@ -28,7 +28,8 @@ class TestGetAllCommunities : KoinTest {
 
     @Test
     fun `get all communities`() = runTest {
-        getAllCommunitiesUseCase()
+
+        assertTrue { getAllCommunitiesUseCase().first().isNotEmpty() }
     }
 
     @Test
