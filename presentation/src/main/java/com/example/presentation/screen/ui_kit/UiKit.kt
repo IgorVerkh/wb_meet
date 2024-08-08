@@ -44,6 +44,7 @@ import com.example.presentation.component.MembersRow
 import com.example.presentation.component.MeetingsBottomNavBar
 import com.example.presentation.component.PhoneNumberTextField
 import com.example.presentation.interaction_source.AlwaysHoverInteractionSource
+import com.example.presentation.screen.phone_number.CountryPhoneData
 import com.example.presentation.screen.ui_kit.component.Type
 
 @Composable
@@ -144,7 +145,9 @@ private fun UiKitContent(
         Spacer(modifier = Modifier.height(16.dp))
         PhoneNumberTextField(
             value = phoneNumber,
-            onValueChange = { phoneNumber = it }
+            selectedCountry = CountryPhoneData.RUSSIA,
+            onValueChange = { phoneNumber = it },
+            onCountryClick = {}
         )
         Spacer(modifier = Modifier.height(48.dp))
     }

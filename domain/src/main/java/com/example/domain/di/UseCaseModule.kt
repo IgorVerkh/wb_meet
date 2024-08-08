@@ -8,6 +8,8 @@ import com.example.domain.usecase.GetCommunityByIdUseCase
 import com.example.domain.usecase.GetCommunityByIdUseCaseImpl
 import com.example.domain.usecase.GetMeetingByIdUseCase
 import com.example.domain.usecase.GetMeetingByIdUseCaseImpl
+import com.example.domain.usecase.IsAuthenticatedUseCase
+import com.example.domain.usecase.IsAuthenticatedUseCaseImpl
 import org.koin.dsl.module
 
 internal val useCaseModule = module {
@@ -22,5 +24,8 @@ internal val useCaseModule = module {
     }
     factory<GetCommunityByIdUseCase> {
         GetCommunityByIdUseCaseImpl(repository = get())
+    }
+    factory<IsAuthenticatedUseCase> {
+        IsAuthenticatedUseCaseImpl(repository = get())
     }
 }

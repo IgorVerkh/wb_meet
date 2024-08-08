@@ -8,6 +8,8 @@ import com.example.domain.model.Community
 import com.example.domain.model.Meeting
 import com.example.domain.repository.MeetRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
 internal class MeetRepositoryFakeImpl : MeetRepository {
@@ -42,4 +44,6 @@ internal class MeetRepositoryFakeImpl : MeetRepository {
     override fun submitOTP() {
         TODO("Not yet implemented")
     }
+
+    override fun isAuthenticated(): Flow<Boolean> = flowOf(false)
 }
