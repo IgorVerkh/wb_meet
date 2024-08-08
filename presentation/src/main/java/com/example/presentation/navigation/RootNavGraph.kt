@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
-import com.example.presentation.screen.SplashScreen
+import com.example.presentation.screen.splash_screen.SplashScreen
 import com.example.presentation.screen.all_meetings.AllMeetings
 import com.example.presentation.screen.communities.Communities
 import com.example.presentation.screen.community_details.CommunityDetails

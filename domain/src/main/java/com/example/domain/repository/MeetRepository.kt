@@ -3,6 +3,7 @@ package com.example.domain.repository
 import com.example.domain.model.Community
 import com.example.domain.model.Meeting
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 interface MeetRepository {
 
@@ -21,4 +22,6 @@ interface MeetRepository {
     fun sendPhoneNumber()
 
     fun submitOTP()
+
+    fun isAuthenticated(): Flow<Boolean>
 }

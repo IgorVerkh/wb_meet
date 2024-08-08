@@ -28,4 +28,5 @@
     <string name="meetings_nav_item">Встречи</string>
     <string name="commmunities_nav_item">Сообщества</string>
     <string name="misc_nav_item">Еще</string>
+    <string name="profile_top_bar">Профиль</string>
 </resources>
