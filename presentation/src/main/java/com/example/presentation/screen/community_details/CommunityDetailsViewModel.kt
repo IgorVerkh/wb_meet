@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 internal class CommunityDetailsViewModel(
-    private val getCommunityByIdUseCase: GetCommunityByIdUseCase
+    private val getCommunityByIdUseCase: GetCommunityByIdUseCase,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<CommunityDetailsState>(CommunityDetailsState.Loading)
     private val uiState: StateFlow<CommunityDetailsState> = _uiState

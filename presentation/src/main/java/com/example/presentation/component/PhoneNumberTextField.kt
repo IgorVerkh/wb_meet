@@ -34,33 +34,21 @@ import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.presentation.R
+import com.example.presentation.screen.phone_number.CountryPhoneData
 import com.example.presentation.theme.Body1
 import com.example.presentation.theme.NeutralDisabled
 import com.example.presentation.theme.NeutralOffWhite
-
-enum class CountryCodes(val phoneCode: String, val mask: String, val flag: Int) {
-    RUSSIA("+7","0000 00-00", R.drawable.ic_russia_flag),
-    UNITED_ARAB_EMIRATES("+971", "000 000 0000", R.drawable.ic_united_arab_emirates_flag),
-    UNITED_KINGDOM("+44", "000 000 0000", R.drawable.ic_britain_flag),
-    GEORGIA("+995", "000 000 000", R.drawable.ic_georgia_flag),
-    KYRGYZSTAN("+996", "000 000 000", R.drawable.ic_kyrgyzstan_flag),
-    SOUTH_KOREA("+82", "000 000-0000", R.drawable.ic_south_korea_flag),
-    KAZAKHSTAN("+7","000 000 00 00", R.drawable.ic_kazakhstan_flag),
-    TURKEY("+90", "000 000 00 00", R.drawable.ic_turkey_flag),
-    UNITED_STATES("+1", "(000) 000-0000", R.drawable.ic_usa_flag),
-    UZBEKISTAN("+998", "000 000 00 00", R.drawable.ic_uzbekistan_flag);
-}
 
 
 @Composable
 fun PhoneNumberTextField(
     value: String,
+    selectedCountry: CountryPhoneData,
     onValueChange: (String) -> Unit,
+    onCountryClick: (CountryPhoneData) -> Unit,
     modifier: Modifier = Modifier,
     maskSymbol: Char = '0'
 ) {
-    var selectedCountry by remember { mutableStateOf(CountryCodes.RUSSIA) }
     var expanded by remember { mutableStateOf(false) }
     
     Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -80,7 +68,7 @@ fun PhoneNumberTextField(
             modifier = Modifier
                 .background(NeutralOffWhite)
         ) {
-            CountryCodes.entries.forEach { country ->
+            CountryPhoneData.entries.forEach { country ->
                 DropdownMenuItem(
                     text = {
                         CountryPhoneCode(
@@ -90,7 +78,7 @@ fun PhoneNumberTextField(
                         )
                     },
                     onClick = {
-                        selectedCountry = country
+                        onCountryClick(country)
                         expanded = false
                     },
                     modifier = Modifier
@@ -222,7 +210,9 @@ private fun PhoneNumberTextFieldPreview() {
     ) {
         PhoneNumberTextField(
             value = "",
+            selectedCountry = CountryPhoneData.RUSSIA,
             onValueChange = {},
+            onCountryClick = {},
             modifier = Modifier.align(Alignment.Center)
         )
     }

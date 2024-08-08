@@ -1,4 +1,4 @@
-package com.example.presentation.screen
+package com.example.presentation.screen.splash_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,9 +15,13 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.presentation.R
 import com.example.presentation.navigation.Graph
 import com.example.presentation.navigation.Screen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun SplashScreen(navController: NavHostController) {
+internal fun SplashScreen(
+    navController: NavHostController,
+    viewModel: SplashScreenViewModel = koinViewModel()
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -30,8 +34,9 @@ internal fun SplashScreen(navController: NavHostController) {
             composition = composition,
             progress = { logoAnimationState.progress }
         )
+        val nextRoute = if (viewModel.isAuthenticated()) Graph.MeetingsGraph.route else Graph.AuthGraph.route
         if (logoAnimationState.isAtEnd && logoAnimationState.isPlaying) {
-            navController.navigate(Graph.MeetingsGraph.route) {
+            navController.navigate(nextRoute) {
                 popUpTo(Screen.SplashScreen.route) {
                     inclusive = true
                 }

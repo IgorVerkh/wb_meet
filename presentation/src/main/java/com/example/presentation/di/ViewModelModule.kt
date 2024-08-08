@@ -10,6 +10,7 @@ import com.example.presentation.screen.otp_confirmation.OTPConfirmationViewModel
 import com.example.presentation.screen.phone_number.PhoneNumberViewModel
 import com.example.presentation.screen.profile.ProfileViewModel
 import com.example.presentation.screen.profile_creation.ProfileCreationViewModel
+import com.example.presentation.screen.splash_screen.SplashScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { PhoneNumberViewModel() }
     viewModel { ProfileViewModel() }
     viewModel { ProfileCreationViewModel() }
+    viewModel { SplashScreenViewModel(isAuthenticatedUseCase = get()) }
 }

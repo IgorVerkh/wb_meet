@@ -5,6 +5,7 @@ import com.example.domain.model.Meeting
 import com.example.domain.model.mockedCommunities
 import com.example.domain.model.mockedMeetings
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 
 class MeetRepositoryStubImpl : MeetRepository {
@@ -37,6 +38,10 @@ class MeetRepositoryStubImpl : MeetRepository {
     }
 
     override fun submitOTP() {
+        TODO("Not yet implemented")
+    }
+
+    override fun isAuthenticated(): Flow<Boolean> {
         TODO("Not yet implemented")
     }
 }
