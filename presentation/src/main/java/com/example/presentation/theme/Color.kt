@@ -24,5 +24,7 @@ val NeutralActive = Color(0xFF29183B)
 val NeutralLine = Color(0xFFEDEDED)
 val AvatarBorder = Color(0xFFD2D5F9)
 val SixSixSix = Color(0xFF666666)
+val Disabled = Color(0xFFF6F6FA)
+val DisabledContent = Color(0xFF9797AF)
 
 val ButtonFocusBorder = Color(0xFFF5ECFF)
