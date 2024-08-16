@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import android.content.res.Resources.Theme
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -19,8 +20,10 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material.MaterialTheme
 import com.example.presentation.theme.BrandDefault
 import com.example.presentation.theme.Disabled
+import com.example.presentation.theme.MeetTheme
 
 @Composable
 internal fun Toggle(
@@ -77,8 +80,11 @@ internal fun Toggle(
 @Composable
 private fun TogglePreview() {
     var checked by remember { mutableStateOf(true) }
-    Toggle(
-        checked = checked,
-        onCheckedChange = { checked = !checked }
-    )
+    MeetTheme {
+        Toggle(
+            checked = checked,
+            onCheckedChange = { checked = !checked },
+            checkedTrackColor = MaterialTheme.colors.primary
+        )
+    }
 }

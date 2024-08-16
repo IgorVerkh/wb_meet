@@ -86,7 +86,7 @@ val Metadata3 = TextStyle(
     letterSpacing = 0.5.sp
 )
 
-val Typography = Typography(
+val typography = Typography(
     displayLarge = Heading1,
     displayMedium = Heading2,
     titleLarge = Subheading1,
