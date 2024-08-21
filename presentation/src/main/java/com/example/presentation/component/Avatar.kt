@@ -35,7 +35,7 @@ fun SquareAvatar(
         modifier = modifier
             .defaultMinSize(minHeight = 48.dp, minWidth = 48.dp)
             .clip(RoundedCornerShape(size = 16.dp))
-        )
+    )
 }
 
 @Composable

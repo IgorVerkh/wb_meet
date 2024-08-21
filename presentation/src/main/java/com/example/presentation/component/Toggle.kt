@@ -35,8 +35,8 @@ internal fun Toggle(
     height: Dp = 24.dp,
     // TODO: make ToggleColors
     // TODO: add disabled coloring
-    checkedTrackColor: Color = BrandDefault,
-    uncheckedTrackColor: Color = Disabled,
+    checkedTrackColor: Color = MeetTheme.colors.brandColorDefault,
+    uncheckedTrackColor: Color = MeetTheme.colors.disabledContent,
     gapBetweenThumbAndTrackEdge: Dp = 1.5.dp,
 ) {
     val thumbRadius = (height / 2) - gapBetweenThumbAndTrackEdge
@@ -83,8 +83,7 @@ private fun TogglePreview() {
     MeetTheme {
         Toggle(
             checked = checked,
-            onCheckedChange = { checked = !checked },
-            checkedTrackColor = MaterialTheme.colors.primary
+            onCheckedChange = { checked = !checked }
         )
     }
 }
