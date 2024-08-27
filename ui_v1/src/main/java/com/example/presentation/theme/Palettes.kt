@@ -1,6 +1,7 @@
 package com.example.presentation.theme
 
 internal val lightPalette = Colors(
+    primary = Primary,
     brandColorDefault = BrandDefault,
     brandColorLight = BrandLight,
     brandColorDark = BrandDark,
@@ -13,5 +14,7 @@ internal val lightPalette = Colors(
     neutralColorLine = NeutralLine,
     neutralColorWeak = NeutralWeak,
     neutralColorActive = NeutralActive,
-    sixSixSix = SixSixSix
+    sixSixSix = SixSixSix,
+    metadata = Metadata,
+    error = Error
 )

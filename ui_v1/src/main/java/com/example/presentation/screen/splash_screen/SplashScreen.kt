@@ -20,7 +20,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun SplashScreen(
     navController: NavHostController,
-    viewModel: SplashScreenViewModel = koinViewModel()
+    viewModel: SplashScreenViewModel = koinViewModel(),
 ) {
     Box(
         modifier = Modifier
@@ -34,7 +34,8 @@ internal fun SplashScreen(
             composition = composition,
             progress = { logoAnimationState.progress }
         )
-        val nextRoute = if (viewModel.isAuthenticated()) Graph.MeetingsGraph.route else Graph.AuthGraph.route
+        val nextRoute =
+            if (viewModel.isAuthenticated()) Graph.MeetingsGraph.route else Graph.AuthGraph.route
         if (logoAnimationState.isAtEnd && logoAnimationState.isPlaying) {
             navController.navigate(nextRoute) {
                 popUpTo(Screen.SplashScreen.route) {

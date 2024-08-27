@@ -47,10 +47,10 @@ fun PhoneNumberTextField(
     onValueChange: (String) -> Unit,
     onCountryClick: (CountryPhoneData) -> Unit,
     modifier: Modifier = Modifier,
-    maskSymbol: Char = '0'
+    maskSymbol: Char = '0',
 ) {
     var expanded by remember { mutableStateOf(false) }
-    
+
     Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
 
         CountryPhoneCode(
@@ -179,7 +179,7 @@ private fun CountryPhoneCode(
     flag: Int,
     phoneCode: String,
     textColor: Color,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier

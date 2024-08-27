@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":ui_v2")
+
+
 pluginManagement {
     repositories {
         google {
@@ -24,6 +27,6 @@ dependencyResolutionManagement {
 rootProject.name = "Meet"
 include(":app")
 include(":data")
-include(":presentation")
+include(":ui_v1")
 include(":domain")
  

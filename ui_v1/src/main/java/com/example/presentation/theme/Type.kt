@@ -1,6 +1,7 @@
 package com.example.presentation.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -25,7 +26,7 @@ val Heading1 = TextStyle(
     fontWeight = FontWeight.Bold,
     fontSize = 32.sp,
     lineHeight = 38.sp,
-    letterSpacing = 0.5.sp
+    letterSpacing = 0.5.sp,
 )
 
 val Heading2 = TextStyle(

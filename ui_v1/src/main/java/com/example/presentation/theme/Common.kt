@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 
 // TODO: rename colors
 internal data class Colors(
+    val primary: Color,
     val brandColorDefault: Color,
     val brandColorDark: Color,
     val brandColorDarkMode: Color,
@@ -19,7 +20,9 @@ internal data class Colors(
     val avatarBorder: Color,
     val sixSixSix: Color,
     val disabled: Color,
-    val disabledContent: Color
+    val disabledContent: Color,
+    val metadata: Color,
+    val error: Color,
 )
 
 enum class ColorStyle {

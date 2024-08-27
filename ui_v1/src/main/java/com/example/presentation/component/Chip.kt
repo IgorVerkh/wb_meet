@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.R
+import com.example.presentation.theme.Body2
 import com.example.presentation.theme.BrandBackground
 import com.example.presentation.theme.BrandDark
 import com.example.presentation.theme.BrandDefault
@@ -39,12 +40,12 @@ fun TagChip(
     Text(
         modifier = modifier
             .background(
-                color = BrandBackground,
+                color = MeetTheme.colors.disabled,
                 shape = RoundedCornerShape(48.dp)
             )
             .padding(horizontal = 10.dp, vertical = 4.dp),
-        style = Metadata3,
-        color = BrandDark,
+        style = Body2,
+        color = MeetTheme.colors.primary,
         text = text
     )
 }
