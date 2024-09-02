@@ -2,4 +2,6 @@
 <resources>
     <string name="interests_title">Интересы</string>
     <string name="interests_description">Выберите интересы, чтобы мы рекомендовали полезные встречи</string>
+    <string name="interests_postpone">Расскажу позже</string>
+    <string name="save">Сохранить</string>
 </resources>

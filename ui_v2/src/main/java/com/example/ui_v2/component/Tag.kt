@@ -19,15 +19,15 @@ import com.example.ui_v2.theme.MeetTheme
 import com.example.ui_v2.theme.Primary
 
 /*
-* Big Chip - text 22.dp
+* Big Tag - text 22.dp
 *            used in editing interests screen (clickable)
 *
-* Medium Chip - text 16.dp;
+* Medium Tag - text 16.dp;
 *               used in profile screen in editing mode (clickable)
 *               used in meeting cards (not clickable)
 *               used in other meetings block (clickable)
 *
-* Small Chip - text 14.dp;
+* Small Tag - text 14.dp;
 *              used in profile screen (not clickable)
 *              used in profile cards (not clickable)
 */
@@ -145,7 +145,7 @@ internal fun BigTag(
 @Composable
 private fun SmallTagPreview() {
     SmallTag(
-        text = "Разработка",
+        text = "Backend",
         onClick = {},
         state = TagState.ACTIVE
     )
@@ -155,7 +155,7 @@ private fun SmallTagPreview() {
 @Composable
 private fun MediumTagPreview() {
     MediumTag(
-        text = "Разработка",
+        text = "Backend",
         onClick = {},
         state = TagState.SECONDARY,
         enabled = false
@@ -166,7 +166,7 @@ private fun MediumTagPreview() {
 @Composable
 private fun BigTagPreview() {
     BigTag(
-        text = "Разработка",
+        text = "Backend",
         onClick = {},
         state = TagState.ACTIVE,
         enabled = true

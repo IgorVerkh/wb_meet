@@ -34,9 +34,9 @@ import androidx.compose.ui.unit.dp
 import com.example.ui_v2.theme.BrandDefault
 import com.example.ui_v2.theme.Disabled
 import com.example.ui_v2.theme.DisabledContent
-import com.example.ui_v2.theme.Subheading1
-import com.example.ui_v2.theme.gradientViolet
+import com.example.ui_v2.theme.MeetTheme
 import com.example.ui_v2.theme.gradientSmoky
+import com.example.ui_v2.theme.gradientViolet
 
 internal enum class LoadingButtonState {
     ACTIVE, LOADING, DISABLED
@@ -105,7 +105,7 @@ internal fun LoadingButton(
                 Text(
                     text = text,
                     color = colors.contentColor,
-                    style = Subheading1
+                    style = MeetTheme.typo.labelLarge
                 )
             }
         }
@@ -125,7 +125,7 @@ internal fun LoadingButton(
                 Text(
                     text = text,
                     color = colors.disabledContentColor,
-                    style = Subheading1,
+                    style = MeetTheme.typo.labelLarge,
                 )
             }
         }

@@ -1,5 +1,6 @@
 package com.example.ui_v2.theme
 
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -10,90 +11,80 @@ import com.example.ui_v2.R
 
 val InterDisplay = FontFamily(
     Font(R.font.inter_display_regular, FontWeight.Normal),
+    Font(R.font.inter_display_medium, FontWeight.Medium),
     Font(R.font.inter_display_semibold, FontWeight.SemiBold),
     Font(R.font.inter_display_bold, FontWeight.Bold),
 )
 
-val Heading1 = TextStyle(
+val Regular19 = TextStyle(
     fontFamily = InterDisplay,
-    fontWeight = FontWeight.Bold,
-    fontSize = 32.sp,
-    lineHeight = 38.sp,
-    letterSpacing = 0.5.sp,
+    fontWeight = FontWeight.Normal,
+    fontSize = 19.sp
 )
 
-val Heading2 = TextStyle(
+val Medium14 = TextStyle(
     fontFamily = InterDisplay,
-    fontWeight = FontWeight.Bold,
-    fontSize = 24.sp,
-    lineHeight = 28.sp,
-    letterSpacing = 0.5.sp
+    fontWeight = FontWeight.Medium,
+    fontSize = 14.sp,
 )
 
-val Subheading1 = TextStyle(
+val Medium16 = TextStyle(
+    fontFamily = InterDisplay,
+    fontWeight = FontWeight.Medium,
+    fontSize = 16.sp,
+)
+
+val Medium18 = TextStyle(
+    fontFamily = InterDisplay,
+    fontWeight = FontWeight.Medium,
+    fontSize = 18.sp,
+)
+
+val Medium22 = TextStyle(
+    fontFamily = InterDisplay,
+    fontWeight = FontWeight.Medium,
+    fontSize = 22.sp,
+)
+
+val SemiBold14 = TextStyle(
+    fontFamily = InterDisplay,
+    fontWeight = FontWeight.SemiBold,
+    fontSize = 14.sp,
+)
+
+val SemiBold18 = TextStyle(
     fontFamily = InterDisplay,
     fontWeight = FontWeight.SemiBold,
     fontSize = 18.sp,
-    lineHeight = 30.sp,
-    letterSpacing = 0.5.sp
 )
 
-val Subheading2 = TextStyle(
+val SemiBold24 = TextStyle(
     fontFamily = InterDisplay,
     fontWeight = FontWeight.SemiBold,
-    fontSize = 16.sp,
-    lineHeight = 28.sp,
-    letterSpacing = 0.5.sp
+    fontSize = 24.sp,
 )
 
-val Body1 = TextStyle(
+val SemiBold49 = TextStyle(
     fontFamily = InterDisplay,
     fontWeight = FontWeight.SemiBold,
-    fontSize = 14.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.5.sp
+    fontSize = 49.sp,
 )
 
-val Body2 = TextStyle(
+val Bold34 = TextStyle(
     fontFamily = InterDisplay,
-    fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.5.sp
-)
-
-val Metadata1 = TextStyle(
-    fontFamily = InterDisplay,
-    fontWeight = FontWeight.Normal,
-    fontSize = 12.sp,
-    lineHeight = 20.sp,
-    letterSpacing = 0.5.sp
-)
-
-val Metadata2 = TextStyle(
-    fontFamily = InterDisplay,
-    fontWeight = FontWeight.Normal,
-    fontSize = 10.sp,
-    lineHeight = 16.sp,
-    letterSpacing = 0.5.sp
-)
-
-val Metadata3 = TextStyle(
-    fontFamily = InterDisplay,
-    fontWeight = FontWeight.SemiBold,
-    fontSize = 10.sp,
-    lineHeight = 16.sp,
-    letterSpacing = 0.5.sp
+    fontWeight = FontWeight.Bold,
+    fontSize = 34.sp
 )
 
 val typography = Typography(
-    displayLarge = Heading1,
-    displayMedium = Heading2,
-    titleLarge = Subheading1,
-    titleMedium = Subheading2,
-    bodyLarge = Body1,
-    bodyMedium = Body2,
-    labelLarge = Metadata1,
-    labelMedium = Metadata2,
-    labelSmall = Metadata3
+    displayLarge = SemiBold49,
+    displayMedium = Bold34,
+    titleLarge = SemiBold24,
+    titleMedium = Medium22,
+    titleSmall = Medium18,
+    bodyLarge = Medium16,
+    bodyMedium = Regular19,
+    bodySmall = Medium14,
+    labelLarge = SemiBold18,
+    labelMedium = SemiBold14,
 )
