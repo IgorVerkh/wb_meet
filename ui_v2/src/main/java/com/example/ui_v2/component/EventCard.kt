@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.ui_v2.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,13 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.wear.compose.material.Text
 import coil.compose.AsyncImage
-import com.example.presentation.R
-import com.example.presentation.theme.Body2
-import com.example.presentation.theme.Heading1
-import com.example.presentation.theme.MeetTheme
-import com.example.presentation.theme.Subheading1
+import com.example.ui_v2.R
+import com.example.ui_v2.theme.MeetTheme
 
 @Composable
 internal fun EventCardWide(
@@ -35,7 +32,7 @@ internal fun EventCardWide(
     modifier: Modifier = Modifier
 ) {
     EventCard(
-        title = { Text(text = title, style = Heading1, color = Color.Black) },
+        title = { Text(text = title, style = MeetTheme.typo.displayLarge, color = Color.Black) },
         image = image,
         date = date,
         address = address,
@@ -54,7 +51,7 @@ internal fun EventCardThin(
     modifier: Modifier = Modifier
 ) {
     EventCard(
-        title = { Text(text = title, style = Subheading1, color = Color.Black) },
+        title = { Text(text = title, style = MeetTheme.typo.displayMedium, color = Color.Black) },
         image = image,
         date = date,
         address = address,
@@ -88,7 +85,7 @@ internal fun EventCard(
         title.invoke()
         Text(
             text = "$date · $address",
-            style = Body2,
+            style = MeetTheme.typo.bodyMedium,
             color = MeetTheme.colors.metadata,
             modifier = Modifier.padding(end = 8.dp)
         )
@@ -97,7 +94,14 @@ internal fun EventCard(
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            tags.forEach { TagChip(text = it) }
+            tags.forEach {
+                MediumTag(
+                    text = it,
+                    state = TagState.SECONDARY,
+                    onClick = {},
+                    enabled = false
+                )
+            }
         }
     }
 }
