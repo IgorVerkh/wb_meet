@@ -4,4 +4,14 @@
     <string name="interests_description">Выберите интересы, чтобы мы рекомендовали полезные встречи</string>
     <string name="interests_postpone">Расскажу позже</string>
     <string name="save">Сохранить</string>
+    <string name="event_attendees_appbar">Пойдут на встречу</string>
+    <string name="get_new_code_timer">Получить новый код через %1$s</string>
+    <string name="get_new_code">Получить новый код</string>
+    <string name="event_application_title">Вход и запись на встречу</string>
+    <string name="continue_action">Продолжить</string>
+    <string name="name_surname_placeholder">Имя и фамилия</string>
+    <string name="send_and_submit_code">Отправить и подтвердить запись</string>
+    <string name="all_categories">Все категории</string>
+    <string name="find_events_and_communities">Найти встречи и сообщества</string>
+    <string name="cancel">Отмена</string>
 </resources>

@@ -31,17 +31,18 @@ internal fun MapView(
     var showFullScreenImage by remember { mutableStateOf(false) }
 
     if (showFullScreenImage) {
-        Dialog(onDismissRequest = { showFullScreenImage = false },
+        Dialog(
+            onDismissRequest = { showFullScreenImage = false },
             properties = DialogProperties(usePlatformDefaultWidth = false)
         ) {
             Surface(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable(
-                    interactionSource = interactionSource,
-                    indication = null,
-                    onClick = { showFullScreenImage = false }
-                )
+                        interactionSource = interactionSource,
+                        indication = null,
+                        onClick = { showFullScreenImage = false }
+                    )
             ) {
                 AsyncImage(
                     model = R.drawable.ic_map_mock,
@@ -61,7 +62,7 @@ internal fun MapView(
         placeholder = painterResource(id = R.drawable.ic_map_mock),
         contentScale = ContentScale.FillWidth,
         modifier = modifier
-            .aspectRatio(16f/9f)
+            .aspectRatio(16f / 9f)
             .clip(shape = RoundedCornerShape(32.dp))
             .clickable(
                 interactionSource = interactionSource,
@@ -70,7 +71,6 @@ internal fun MapView(
             )
     )
 }
-
 
 
 @Preview(showSystemUi = true)

@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.example.presentation.navigation.RootNavGraph
-import com.example.presentation.theme.MeetTheme
+import com.example.ui_v2.navigation.RootNavGraph
+import com.example.ui_v2.theme.MeetTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

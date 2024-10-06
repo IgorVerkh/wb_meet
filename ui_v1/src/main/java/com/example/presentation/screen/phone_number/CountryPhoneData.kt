@@ -8,7 +8,7 @@ enum class CountryPhoneData(
     val mask: String,
     @StringRes val flag: Int,
 ) {
-    RUSSIA("+7", "0000 00-00", R.drawable.ic_russia_flag),
+    RUSSIA("+7", "000 000 00 00", R.drawable.ic_russia_flag),
     UNITED_ARAB_EMIRATES("+971", "000 000 0000", R.drawable.ic_united_arab_emirates_flag),
     UNITED_KINGDOM("+44", "000 000 0000", R.drawable.ic_britain_flag),
     GEORGIA("+995", "000 000 000", R.drawable.ic_georgia_flag),

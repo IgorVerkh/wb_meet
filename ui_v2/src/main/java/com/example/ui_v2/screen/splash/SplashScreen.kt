@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.ui_v2.R
+import com.example.ui_v2.navigation.Graph
 import kotlinx.coroutines.delay
 
 @Composable
@@ -20,7 +21,8 @@ internal fun SplashScreen(
 ) {
     LaunchedEffect(key1 = true) {
         delay(2000)
-        // TODO: navigate next
+        // TODO: Split navigation
+        navController.navigate(Graph.Onboarding.route)
     }
     SplashScreenContent()
 }

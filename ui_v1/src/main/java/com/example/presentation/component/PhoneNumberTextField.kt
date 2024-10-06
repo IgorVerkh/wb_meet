@@ -209,7 +209,7 @@ private fun PhoneNumberTextFieldPreview() {
         modifier = Modifier.fillMaxSize()
     ) {
         PhoneNumberTextField(
-            value = "",
+            value = "99985861190",
             selectedCountry = CountryPhoneData.RUSSIA,
             onValueChange = {},
             onCountryClick = {},
