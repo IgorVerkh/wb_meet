@@ -69,7 +69,7 @@ internal fun WBAppBar(
 @Composable
 private fun WBAppBarPreview() {
     WBAppBar(
-        title = "Как повышать грейд. Лекция Павла Хорикова",
+        title = "It crowd",
         isShareActive = true
     )
 }

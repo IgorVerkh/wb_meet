@@ -54,7 +54,6 @@ private fun PeopleContent(
             .padding(
                 start = 12.dp,
                 end = 12.dp,
-                top = 20.dp,
                 bottom = 28.dp + paddingValues.calculateBottomPadding()
             )
     ) {
